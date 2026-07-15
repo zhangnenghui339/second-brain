@@ -31,15 +31,40 @@
 
 | 问题域                  | 加载角色(`prompts/`)                | 加载记忆                                                    | 典型触发                          |
 | ----------------------- | ------------------------------------ | ------------------------------------------------------------ | --------------------------------- |
-| 创业 / CareerRadar      | `business/` 下的角色文件             | `projects/careerradar/_overview.md` → 按需下钻 `decisions/` | "affiliate 下一步"、"这功能做不做" |
+| 创业 / CareerRadar      | `business/` 下的角色文件             | `projects/careerradar/_overview.md` → `strategy/_index.md` → 默认加载 `strategy/01-流量与邮件名单飞轮.md`;命中特定飞轮时替换/补充 | "affiliate 下一步"、"这功能做不做" |
 | 重大决策 / 资源分配    | `decision/` 下的角色文件             | `decisions/_index.md` + `thinking/principles.md`             | "要不要押注 X"、"预算怎么分"      |
-| 亲子教育               | `parenting/education-decision.md`    | `family/daughter/_overview.md`                                | "家长会后怎么谈"、"学习规划"      |
+| 亲子教育               | `parenting/教育决策顾问.md`           | `family/daughter/_overview.md`                                | "家长会后怎么谈"、"学习规划"      |
 | 哲学 / 认知             | `persona/` 下的角色文件             | `thinking/_index.md` → 相关 thread                            | "恐惧与未来"、"人性第一性原理"    |
 | 心理 / 关系 / 内耗      | `persona/` + `psychology/`           | `family/partner/_overview.md` + 本文件第 1 节性格描述        | "这段互动怎么理解"、"内耗期怎么办" |
 | 信息鉴别               | `decision/` 里的事实核查角色         | 无需历史记忆                                                  | "这篇文章 / 这个成功学观点靠谱吗" |
 | 表达 / 写作             | `expression/`                        | `prompts/writing/`(风格规范)                                 | "写成推文 / 落地页文案"           |
 | 归档请求("这个放哪")   | 无需角色                             | `_meta/taxonomy.md` + `thinking/_index.md` 的 thread 列表     | "这段内容放哪、跟什么整合"        |
 | 跨域 / 不确定           | 先读 `_meta/index.md` 全局地图定位  | 命中后按上表加载                                              | —                                  |
+
+### 3.1 同域多个角色文件时,如何选(避免"进了文件夹随便挑一个")
+
+上表命中的目录(如 `business/`、`persona/`、`decision/`)下可能有多个角色文件。判断顺序:
+
+1. **看 frontmatter 的 `triggers` / `excludes` 字段**(角色文件头部已标注,`prompts/_index.md` 里也有链接可跳转)。这里按**语义意图匹配**,不是机械关键词匹配:问题的实际任务命中某角色的 `triggers` → 进入候选;命中某角色的 `excludes` → 直接排除。
+2. **只有一个命中** → 直接用它,不用再问。
+3. **多个命中时先定主辅,最多加载两个角色**。默认优先级:**具体任务角色 > 通用领域角色 > Persona/表达风格角色**;输出契约与当前交付物最匹配的角色作为主角色,另一个只能作为辅助约束,不能平均混合。
+4. **多个命中,且是互补关系**(例如同时问"关键词怎么投"+"落地页结构怎么搭" → 命中 SEM 与语义建模两个角色)→ 加载 1 个主角色 + 1 个辅助角色,开头声明"主角色:X;辅助角色:Y;原因:……"。
+5. **多个命中,且是互斥/重叠关系** → 先选任务边界更窄、交付物更具体的角色;只有当不同选择会实质改变分析目标或结论,且无法从当前问题判断时,才列出候选及适用场景让我选。
+6. **一个都不命中** → 不要硬套现有角色,直接说明"没有精确匹配的角色,按 XX 角色框架近似回答"或"建议新建角色",不假装匹配。
+7. 角色文件缺 `triggers`/`excludes` 字段(遗留文件)→ 按 `title`、角色定位和输出契约做粗匹配,标准同上。
+
+**冲突裁决:**主角色决定分析流程与输出结构;辅助角色只补充约束。若两者规则冲突,按“隐私/安全规则 → 主角色 → 辅助角色”执行,不得把两个输出模板直接拼接。
+
+### 3.2 CareerRadar 多飞轮记忆的默认加载
+
+CareerRadar 当前同时保留四种 `status: exploring` 的运行飞轮。为了避免每次无锚点选择,按以下规则加载:
+
+1. **所有 CareerRadar 问题必读**:`projects/careerradar/_overview.md` + `projects/careerradar/strategy/_index.md`。
+2. **未明确命中某个飞轮时的默认执行基线**:`01-流量与邮件名单飞轮.md`。它代表当前 SEO / Affiliate / Email 获客与触达底座,不代表最终战略已经选定。
+3. 问题涉及 Resume/JD 行为、Outcome、Career Intelligence → 加载 `02-职业智能数据飞轮.md`,替代默认 01 作为主记忆;需要获客上下文时 01 仅作辅助。
+4. 问题涉及 ATS 实测、裁判定位、Parse Report、Benchmark → 加载 `03-ATS实测证据飞轮.md`,替代默认 01 作为主记忆。
+5. 问题涉及面试真题、Resume Bullet、沟通模板、数字资料库 → 加载 `04-职场资源资产库飞轮.md`,替代默认 01 作为主记忆。
+6. 问“总体战略 / 哪个飞轮更好 / 四个如何组合” → 加载 `_index.md` + 四个方案摘要;明确说明尚未定稿,不得把默认执行基线写成最终战略结论。
 
 ## 4. 归档请求的处理流程(简版,完整版见 _meta/agent.md)
 

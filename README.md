@@ -46,7 +46,7 @@ knowledge-base/
 ├── prompts/
 │   ├── _index.md                    # 六类角色索引,对应腾讯文档现有分类
 │   ├── decision/ persona/ business/ expression/ psychology/ writing/
-│   └── parenting/education-decision.md  # ★ 新建的教育决策角色(含焦虑隔离检查机制)
+│   └── parenting/教育决策顾问.md         # ★ 新建的教育决策角色(含焦虑隔离检查机制)
 ├── family/
 │   ├── daughter/_overview.md        # sensitivity: private
 │   └── partner/_overview.md
