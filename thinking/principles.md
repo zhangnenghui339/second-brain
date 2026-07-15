@@ -1,0 +1,20 @@
+---
+title: 个人原则库
+type: thinking
+maturity: principle
+updated: 2026-07-15
+---
+
+# 个人原则库(已升格的结论,L1 级记忆)
+
+> 只有 thread 迭代收敛后才能进入本文件。每条注明来源 thread。
+
+## 决策
+- 个体决策用 Kelly / 非遍历性框架,不用期望值最大化;组合式低成本并行测试优于单点押注。(来源:VC 幂律解构)
+- 保留股权 + 时间自主 + 低公开暴露 > 最大化账面净值。(来源:IPO vs bootstrap 分析)
+
+## 资产
+- 资产三分:Class A 不可回填 / B 折旧 / C 燃料;outcome data 是 CareerRadar 唯一 Class A,必须 day-one 收集。
+
+## 执行
+- 执行力情绪依赖 → 一切靠预承诺规则与系统,不靠意志力。
