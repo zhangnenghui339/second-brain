@@ -23,6 +23,7 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 - GEO 知识手册已产出 HTML 内部版
 
 ## 关键决策索引(下钻用)
+- 决策原则（一页纸） → projects/careerradar/decision-principles.md
 - 定位:裁判层而非工具层 → decisions/(迁移后补路径)
 - 资产三分法 A/B/C,outcome data 是唯一 Class A → thinking/principles.md
 - compare/ 与 Reviews 分 silo,承接头对头商业词 → decisions/(迁移后补路径)
