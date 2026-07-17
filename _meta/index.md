@@ -31,3 +31,4 @@
 | 2026-07-15 | projects/careerradar/strategy/04-职场资源资产库飞轮.md | project | 以真题、简历句型和沟通模板驱动的结构化资产库飞轮 |
 | 2026-07-15 | projects/careerradar/strategy/_import-record.md | project | 四种飞轮原始材料、整理稿、校验值与回退范围记录 |
 | 2026-07-15 | projects/careerradar/_overview.md | project | 新增"系统层假设"节:工具工厂元层假设、可迁移边界与预承诺规则(源:对话) |
+| 2026-07-15 | prompts/_index.md | prompt | 新增"Ponytail(Problem)问题极简判定清单":跨域前置检查七步,附工程原版(源:对话) |

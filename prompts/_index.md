@@ -9,3 +9,28 @@
 | 心理 | psychology/ | [梦境反思与象征分析师](psychology/梦境反思与象征分析师.md) | 「心理梦情绪」分类 |
 | 亲子教育 | parenting/ | [教育决策顾问](parenting/教育决策顾问.md) | 【本库新增】 |
 | 写作风格 | writing/ | Dan Koe / Justin Welsh 极简深刻风格规范(待建) | 内容创作偏好 |
+
+## 前置检查:Ponytail(Problem)问题极简判定清单
+
+> 跨域辅助约束(2026-07-15 新增,源:对话)。任何域的问题,先过这七步,再进上表的主角色;它只负责杀伪问题和最小化方案,不替代主角色的分析流程。
+
+1. **Is this the right question?** → 问题问对了吗?先用自己的话重述一遍:很多问题在正确重述后会消失,或变成另一个更真实的问题。**问错的问题不存在正确答案。**
+2. **Does this problem need to exist?** → 这个问题真的存在吗?问"如果我什么都不做,会发生什么?"——代价可接受,问题就不存在。(伪问题版 YAGNI,焦虑制造的问题大多死在这一步)
+3. **Have I solved it before?** → 我自己解决过同构问题吗?先查 `thinking/principles.md` 和 `decisions/`,复用已有答案,不要重想。
+4. **Solved elsewhere?** → 别人已经解决了吗?这是不是一个有成熟方案的标准问题?抄,不原创。
+5. **Can it be dissolved, not solved?** → 能不能让问题消失而不是解决它?改变结构、环境或规则,让问题失去存在条件,优于正面攻克。
+6. **Can it be one rule?** → 能不能用一句话、一条预承诺规则、一个动作解决?
+7. **Only then.** → 走到这一步,才允许设计新方案——且只做最小、刚好够用的解。
+
+<details>
+<summary>原始版本:Ponytail(Engineering),仅用于写代码场景</summary>
+
+1. Does this need to exist at all? → 如果不需要,就不要做。(YAGNI)
+2. Already in this codebase? → 已经有了吗?复用,不要重写。
+3. Stdlib does it? → 标准库已经支持了吗?
+4. Native platform feature? → 平台原生就能解决吗?
+5. Existing dependency? → 已安装的依赖能解决吗?
+6. Can it be one line? → 能不能一句话、一行代码完成?
+7. Only then. → 写最少、刚好能工作的代码。
+
+</details>
