@@ -38,3 +38,5 @@
 | 2026-07-17 | projects/careerradar/execution/materials/_index.md | project | 待办物料库索引:母本 FROZEN 文档、V01 母版 docx/pdf、测试记录表 |
 | 2026-07-17 | projects/careerradar/决策原则_红线与MVP反脆弱七门.md | project | 决策一页纸(红线+MVP反脆弱七门+四问);由「冷启动」更名为「MVP反脆弱」;第3门为软门 |
 | 2026-07-17 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 七门收敛为六门+执行铁律;第2门增「暂无数据可跳过」但不解除动手禁令;旧七门文件 superseded |
+| 2026-07-17 | projects/careerradar/Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md | project | Day1 证伪 GH 候选人端回填 + 竞品实测供给为零核查;已升格为正式决策 |
+| 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |

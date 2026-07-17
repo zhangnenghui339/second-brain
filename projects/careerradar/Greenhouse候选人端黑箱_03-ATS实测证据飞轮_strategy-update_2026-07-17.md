@@ -2,12 +2,13 @@
 title: Strategy Update · 03 ATS实测证据飞轮 · Greenhouse 候选人端黑箱（Day1 证伪）
 type: project
 project: careerradar
-tags: [strategy-update, ats-evidence, greenhouse, day1]
+tags: [strategy-update, ats-evidence, greenhouse, day1, competitor-audit]
 source: file
 source_file: Downloads/Day1进展总结_2026-07-17.md
 created: 2026-07-17
-status: inbox
+status: archived
 related_strategy: projects/careerradar/strategy/03-ATS实测证据飞轮.md
+related_decision: decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md
 ---
 
 # Strategy Update · 03 ATS实测证据飞轮
@@ -37,6 +38,22 @@ EnergyHub 这次测试是决定性的：表单结构齐全，仍然没有回填�
 
 ---
 
+## 🔍 竞品核查（2026-07-17）：实测供给为零，只有"实测叙事"的营销外壳
+
+对宣称"实测研究"声量最大的竞品做了逐页抓取核查：
+
+**核查对象：ATS Resume AI（atsresumeai.com）**
+
+| 项目 | 宣称 | 实际 |
+|------|------|------|
+| 核心宣称 | "对全部 503 家 S&P 500 公司 ATS 平台的原创研究" | 宣称链接指向一篇通用 9-Point checklist 博客（`/blog/resume-ats-score`），**无任何 parse 数据** |
+| 真实资产 | — | ATS Finder——基于公开 careers 页 URL 的 vendor 识别（`boards.greenhouse.io` / `myworkdayjobs.com` 等），任何人可爬 |
+| 自供证词 | — | 同一文章自供："真实雇主 ATS 主要靠 recruiter 关键词搜索排序候选人，评分工具给出的只是近似模拟" |
+
+结论：声量最大的"实测派"竞品，其实测供给为零——市场上不存在真正基于真实 ATS 引擎的候选人端证据供给。
+
+---
+
 ## 🟢 战略意义（对飞轮 03 的更新）
 
 原假设是"能看到解析结果，但可能不完整"。实测结果是：**求职者对着新版 Greenhouse 完全是黑箱，连预览都没有**——信息不对称比设想的更严重。
@@ -45,7 +62,7 @@ EnergyHub 这次测试是决定性的：表单结构齐全，仍然没有回填�
 
 > 市面上所有免费 "ATS checker" 工具不可能基于真实 Greenhouse 引擎做候选人端展示（观察通道本身不存在），只能是模拟器。
 
-这是对 Jobscan 类竞品最锋利的一句话——"后台真相"这个卖点的稀缺性，从营销修辞变成了实测坐实的事实。
+这是对 Jobscan 类竞品最锋利的一句话——"后台真相"这个卖点的稀缺性，从营销修辞变成了实测坐实的事实。而竞品核查进一步坐实了另一半：不仅"不可能做到"（观察通道不存在），而且"没有人真的在做"（连声量最大的"实测研究"宣称也只是营销外壳，自己都承认是近似模拟）。供给侧真空 + 技术性不可能，两条证据链共同支撑"后台真相"的稀缺性定位。
 
 ---
 
@@ -75,6 +92,7 @@ Greenhouse 官方文档提到解析器含"真伪启发式判断"（fake resume d
 
 ## 📎 关联文件
 
+- `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`（本文件核心发现已升格为正式决策，ADR 格式）
 - `projects/careerradar/strategy/03-ATS实测证据飞轮.md`（本更新所指向的战略主体）
 - `projects/careerradar/execution/ATS实测执行方案_Day1-14.md`（SOP 主文档，通道部分已需据此更新）
 - `projects/careerradar/execution/materials/母本简历_内容冻结_FROZEN.md`（V01 文本唯一来源）

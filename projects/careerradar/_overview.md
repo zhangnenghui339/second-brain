@@ -19,6 +19,7 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 
 ## 当前状态(活跃事项)
 - **ATS 实测 Day 1–14 技术门已启动(2026-07-17)**:SOP 与物料见 `execution/`;母本简历已冻结,V01 基线已产出;Kill Criteria = 一致率 ≥90%,否则裁判定位回退
+- **ATS 实测主通道已切换 Workable+Recruitee(2026-07-17,正式决策)**:Day1 证伪 GH 候选人端回填,GH/Lever 移入 Cycle 2;同时确立"后台真相"双证据链叙事 → `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`
 - Affiliate 渠道搭建:Kickresume / Resume.io / BOLD-US / Jobscan / Huntr 已申请
 - **Impact.com 账户限制(非 marketplace partner)待解决** → 经 Teal + Impact support 推进
 - GEO 知识手册已产出 HTML 内部版
@@ -37,6 +38,7 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 
 ## 关键决策索引(下钻用)
 - 决策一页纸(红线 / MVP 反脆弱六门 / 四问 / 警觉信号) → [`决策原则_红线与MVP反脆弱六门.md`](决策原则_红线与MVP反脆弱六门.md)
+- ATS 实测主通道切换 + "后台真相"双证据链叙事 → `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`(证据源:`Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md`)
 - 定位:裁判层而非工具层 → decisions/(迁移后补路径)
 - 资产三分法 A/B/C → thinking/principles.md;“唯一 Class A 是什么”正在四种飞轮模型中重新比较
 - compare/ 与 Reviews 分 silo,承接头对头商业词 → decisions/(迁移后补路径)
