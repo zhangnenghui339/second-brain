@@ -5,7 +5,7 @@ project: careerradar
 source: file
 source_file: local/doc/seo工具战略规划/CareerRadar_战略流程_v10_Clau.mm
 created: 2026-07-15
-status: exploring
+status: killed
 ---
 
 # 方案 03：ATS 实测证据飞轮
@@ -45,4 +45,6 @@ flowchart LR
 - `parse_results` 和公开方法论构成差异化证据。
 - 内容是实测数据的表达副产品。
 - Affiliate 必须与排名和实测结论隔离，维护裁判信誉。
+
+> 2026-07-17 已否决，见 ../否决记录_ATS自测_2026-07-17.md
 

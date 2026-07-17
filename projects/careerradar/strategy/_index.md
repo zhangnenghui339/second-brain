@@ -31,7 +31,7 @@ decision_status: exploring
 |---|---|---|---|---|
 | [01 流量与邮件名单飞轮](01-流量与邮件名单飞轮.md) | Search Demand | pSEO/Review 内容 → Lead Capture → Newsletter | SEO 权重、Email List、意图标签 | Affiliate、资料包、Micro SaaS 发布 |
 | [02 职业智能数据飞轮](02-职业智能数据飞轮.md) | 用户使用职业工具 | 诊断 → 修改 → 再测 → Outcome 回传 | 行为数据、Outcome Data、Career Intelligence | 诊断工具、订阅、Career Agent |
-| [03 ATS 实测证据飞轮](03-ATS实测证据飞轮.md) | 标准化 ATS 实测 | 实测 → 数据内容 → 报告 → 追踪 → Benchmark | `parse_results`、实测方法论、Outcome | Parse Report、求职季订阅、B2B API |
+| [03 ATS 实测证据飞轮](03-ATS实测证据飞轮.md)（已否决 2026-07-17） | 标准化 ATS 实测 | 实测 → 数据内容 → 报告 → 追踪 → Benchmark | `parse_results`、实测方法论、Outcome | Parse Report、求职季订阅、B2B API |
 | [04 职场资源资产库飞轮](04-职场资源资产库飞轮.md) | 结构化职场资源生产 | 采集 → LLM 结构化 → 人工精审 → 资产页 | 真题库、简历句型库、沟通模板库 | Affiliate、付费资料包、资产订阅 |
 
 ## 四种模型的本质
