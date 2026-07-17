@@ -1,0 +1,207 @@
+html
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rezi 评论 2026：我们针对真实的 ATS 系统对其进行了测试 — CareerRadar</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#101826; --paper:#FAFBF9; --card:#FFFFFF;
+  --body:#2A3442; --muted:#67748A; --line:#E4E8E4;
+  --ok:#0E9F6E; --ok-bg:#EBF9F3; --ok-line:#B5E8D4;
+  --fail:#DC2626; --fail-bg:#FEF1F1; --fail-line:#F5C6C6;
+  --part:#B45309; --part-bg:#FDF6EC; --part-line:#F0DCB8;
+  --chip:#0F3D5C; --chip-bg:#EDF4F9;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.72;font-size:16.5px}
+.mock{background:#101826;color:#8DA3BF;font:600 11px/1 var(--mono);letter-spacing:.14em;text-align:center;padding:7px;text-transform:uppercase}
+.mock b{color:#FCD34D}
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav-in{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:14px 24px}
+.logo{font:700 17px var(--sans);color:var(--ink);text-decoration:none}
+.logo span{color:var(--ok)}
+.nav a.lnk{font:500 13.5px var(--sans);color:var(--muted);text-decoration:none}
+.nav .right{margin-left:auto}
+.btn-free{font:600 13px var(--sans);color:var(--ok);border:1.5px solid var(--ok);border-radius:8px;padding:7px 14px;text-decoration:none}
+
+/* disclosure — top, not footer */
+.disclose{background:#F4F6F8;border-bottom:1px solid #DDE3EA;font-size:13px;color:var(--muted);padding:9px 24px;text-align:center}
+.disclose a{color:var(--ok);font-weight:600}
+
+main{max-width:780px;margin:0 auto;padding:0 24px 80px}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--ok);text-transform:uppercase;margin:44px 0 14px}
+h1{font:700 clamp(28px,4.2vw,40px)/1.2 var(--serif);color:var(--ink);letter-spacing:-.015em;margin-bottom:16px}
+.byline{font-size:13.5px;color:var(--muted);margin-bottom:24px}
+.byline b{color:var(--ink)}
+
+/* verified badge */
+.vbadge{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px;padding:14px 18px;margin-bottom:30px}
+.vbadge .mark{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;font:700 18px var(--sans)}
+.vbadge .t{font:700 15px var(--sans);color:var(--ink)}
+.vbadge .s{font:500 13px var(--sans);color:var(--muted)}
+.chip{display:inline-block;font:600 11.5px var(--mono);color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:1px 8px 2px;text-decoration:none;white-space:nowrap}
+.chip::after{content:" ↗";opacity:.55}
+
+/* quick answer */
+.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-bottom:40px;box-shadow:0 1px 3px rgba(16,24,38,.04)}
+.qa .label{font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ok);margin-bottom:12px}
+.qa .score{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.qa .num{font:700 44px var(--serif);color:var(--ink)}
+.qa .of{font:500 15px var(--sans);color:var(--muted)}
+.qa p{font-size:16px;color:var(--ink)}
+.qa .note{font:500 12.5px var(--mono);color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+
+h2{font:700 clamp(21px,2.8vw,27px)/1.3 var(--serif);color:var(--ink);margin:48px 0 14px;letter-spacing:-.01em}
+p{margin-bottom:15px}
+strong{color:var(--ink)}
+
+/* parse card */
+.pcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0}
+.pcard-h{background:#F6F8F6;border-bottom:1px solid var(--line);padding:13px 20px;font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{font:600 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 20px;border-bottom:1px solid var(--line)}
+td{padding:11px 20px;border-top:1px solid var(--line)}
+.pill{display:inline-block;font:700 11.5px var(--sans);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-line)}
+.p-fail{background:var(--fail-bg);color:var(--fail);border:1px solid var(--fail-line)}
+.p-part{background:var(--part-bg);color:var(--part);border:1px solid var(--part-line)}
+.pcard-cap{padding:12px 20px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+
+/* who for */
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.who .col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.who h3{font:700 15px var(--sans);margin-bottom:12px}
+.who .yes h3{color:var(--ok)} .who .no h3{color:var(--fail)}
+.who li{list-style:none;padding-left:22px;position:relative;margin-bottom:9px;font-size:14.5px}
+.who .yes li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.who .no li::before{content:"✕";position:absolute;left:0;color:var(--fail);font-weight:700}
+
+/* pricing */
+.price td:first-child{font-weight:600;color:var(--ink)}
+.pricewrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);margin:18px 0}
+.warn{font-size:13.5px;color:var(--part);background:var(--part-bg);border:1px solid var(--part-line);border-radius:10px;padding:12px 16px;margin-top:12px}
+
+/* alternatives */
+.alt{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:18px 22px;margin-bottom:12px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.alt .n{font:700 15.5px var(--sans);color:var(--ink)}
+.alt .d{font-size:13.5px;color:var(--muted);max-width:480px}
+.tag-nc{display:inline-block;font:700 10.5px var(--mono);letter-spacing:.08em;color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:2px 8px;text-transform:uppercase}
+.alt a{font:600 13.5px var(--sans);color:var(--ok);text-decoration:none;white-space:nowrap}
+
+/* faq */
+details{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px;padding:0 20px}
+summary{font:600 15px var(--sans);color:var(--ink);padding:15px 0;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--muted);font-size:18px}
+details[open] summary::after{content:"–"}
+details p{font-size:14.5px;padding-bottom:16px;margin:0}
+
+/* CTA */
+.cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:36px 0 0}
+.cta a{display:block;text-decoration:none;border-radius:14px;padding:22px 24px;transition:transform .12s}
+.cta a:hover{transform:translateY(-2px)}
+.cta .primary{background:var(--ink);color:#fff}
+.cta .primary .t{font:700 17px var(--sans);margin-bottom:4px}
+.cta .primary .s{font-size:13px;color:#9FB2C8}
+.cta .secondary{background:var(--ok-bg);border:1.5px solid var(--ok-line);color:var(--ink)}
+.cta .secondary .t{font:700 17px var(--sans);color:var(--ok);margin-bottom:4px}
+.cta .secondary .s{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.cta a{transition:none}}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 24px;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="mock"><b>小样</b> · 内部草稿 · 测试图为样本数据</div>
+<nav class="nav"><div class="nav-in">
+<a class="logo" href="#">职业<span>雷达</span></a>
+<a class="lnk" href="#">研究</a><a class="lnk" href="#">评论</a><a class="lnk" href="#">比较</a>
+<span class="right"></span><a class="btn-free" href="#">免费 ATS 解析预览</a>
+</div></nav>
+<div class="disclose">我们可以通过此页面上的链接赚取佣金。排名是根据我们的 ATS 测试数据生成的 <b>佣金盲法</b> — <a href="#">看看我们如何测试 →</a></div>
+<main>
+<div class="eyebrow">评论 · 简历制作者</div>
+<h1>Rezi 评论：强大的 ATS 解析结果，利基角色的通用输出</h1>
+<div class="byline">经过 <b>职业雷达实验室</b> · 最后验证 <b>2026年6月</b> · 测试批次 <a class="chip" href="#">GH-2026Q2-雷兹</a></div>
+<div class="vbadge">
+<div class="mark">✓</div>
+<div>
+<div class="t">经过真实 ATS 系统验证</div>
+<div class="s">使用 Rezi 生成的简历已于 2026 年 6 月上传至实时 Greenhouse 和 Lever 管道 · 3 个模板 × 每个模板运行 3 次 · <a class="chip" href="#">查看原始记录</a></div>
+</div>
+</div>
+<div class="qa">
+<div class="label">快速解答</div>
+<div class="score"><span class="num">4.2</span><span class="of">/ 5 · 根据解析数据生成的分数，而不是编辑意见</span></div>
+<p><strong>如果您的第一大担心是机器可读性，那么 Rezi 是值得的。</strong> 它的默认模板解析了 Greenhouse 中 10 个跟踪字段中的 9 个，以及 Lever 中 10 个跟踪字段中的 8 个 - 这是我们当前批次中的最佳结果。权衡是：它的人工智能编写的要点对专业角色来说是通用的，所以要留出时间自己重写内容。如果您主要需要免费的一次性支票而不是构建器，那么付费订阅就太过分了——请参阅下面的替代方案。</p>
+<div class="note">评分公式：70% 字段级解析性能 · 20% 出口自由度 · 10% 定价透明度。佣金不是投入。</div>
+</div>
+<h2>我们测量了什么</h2>
+<p>我们使用 Rezi 的三个最受欢迎的模板生成了同一位虚构候选人的简历，导出为 PDF，并将每个模板上传到实时 Greenhouse 和 Lever 申请表中 — 与我们的协议相同 <a href="#" style="color:var(--ok);font-weight:600">ATS 解析研究</a>。没有提交任何意见；我们记录了每次运行 10 个字段的自动填充解析。</p>
+<div class="pcard">
+<div class="pcard-h">解析结果·Rezi默认模板 <span class="chip">GH-2026Q2-雷兹</span></div>
+<table>
+<thead><tr><th>现场组</th><th>温室</th><th>杠杆</th></tr></thead>
+<tbody>
+<tr><td>联系方式</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-ok">通过 9/9</span></td></tr>
+<tr><td>工作经历+日期</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-ok">通过 8/9</span></td></tr>
+<tr><td>技能</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-part">部分7/9</span></td></tr>
+<tr><td>教育</td><td><span class="pill p-part">部分8/9</span></td><td><span class="pill p-ok">通过 9/9</span></td></tr>
+</tbody>
+</table>
+<div class="pcard-cap">一个 Rezi 模板（两列“紧凑”）驱动了上述所有部分结果 - 与我们研究的两列发现一致。坚持其单列模板，解析性能完美无缺。</div>
+</div>
+<h2>谁应该使用Rezi</h2>
+<div class="who">
+<div class="col yes"><h3>获取它，如果你...</h3><ul>
+<li>主要适用于运行结构化 ATS 管道的中型/大型公司</li>
+<li>希望针对编辑器中内置的特定职位描述进行关键字定位</li>
+<li>更喜欢一次性付款 — 终身优惠胜过 3 个月以上的订阅</li>
+</ul></div>
+<div class="col no"><h3>如果您...，请跳过它</h3><ul>
+<li>在一个利基领域工作——它的人工智能要点读起来很通用，你将重写其中的大部分</li>
+<li>只需要检查现有的简历，而不是构建一份（使用免费的解析检查代替）</li>
+<li>主要适用于手动阅读 PDF 的小公司 — 解析优化在那里几乎没有什么用处</li>
+</ul></div>
+</div>
+<h2>定价，包括细则</h2>
+<div class="pricewrap"><table class="price">
+<thead><tr><th>计划</th><th>价格</th><th>真正重要的是什么</th></tr></thead>
+<tbody>
+<tr><td>自由的</td><td>$0</td><td>1 份简历、Rezi 品牌出口、有限 AI 学分</td></tr>
+<tr><td>专业版</td><td>$29/月</td><td>无限AI写作+关键词定位；自动续订</td></tr>
+<tr><td>寿命</td><td>149 美元一次</td><td>如果您的搜索时间超过 3 个月，则最有价值</td></tr>
+</tbody>
+</table></div>
+<div class="warn">⚠ 自动续订注意：Pro 默认情况下每月续订一次，取消是在帐户设置中进行的，而不是通过电子邮件进行 - 如果您的求职时间很短，请设置提醒。</div>
+<h2>我们测试过的替代方案</h2>
+<div class="alt">
+<div><div class="n">踢简历</div><div class="d">我们批次中的模板看起来更好，但杠杆解析结果稍弱。类似的定价。</div></div>
+<a href="#">阅读评论 →</a>
+</div>
+<div class="alt">
+<div><div class="n">青色 <span class="tag-nc">无佣金</span></div><div class="d">推荐青色我们一无所获。它的免费套餐涵盖跟踪+可靠的构建器——此类别中的预算选择。</div></div>
+<a href="#">阅读评论 →</a>
+</div>
+<div class="alt">
+<div><div class="n">自己写+免费解析检查</div><div class="d">如果您的内容很丰富，那么在我们的基线运行中，一个普通的单列文档就可以在 18/18 的运行中完美解析。总成本：0 美元。</div></div>
+<a href="#">参见研究 →</a>
+</div>
+<h2>常问问题</h2>
+<details><summary>Rezi 能否保证我的简历通过 ATS 筛选？</summary><p>没有工具可以。解析会影响您的数据是否被提取和可搜索——这是一个变量。内容质量、角色契合和竞争更重要。在我们的测试中，Rezi 的解析性能很强；这是我们可以证实的说法，也是我们唯一能证实的说法。</p></details>
+<details><summary>Rezi 评分是基于您的意见吗？</summary><p>4.2 是根据字段级解析记录 (70%)、出口自由度 (20%) 和定价透明度 (10%) 计算得出的。编辑写词；数字来自数据。佣金不是一种投入——青色，它不向我们支付任何费用，但在这一类别中的排名超过了两种支付工具。</p></details>
+<details><summary>上次测试该评论是什么时候？</summary><p>2026 年 6 月，批次 GH-2026Q2-rezi。我们每季度重新测试一次；如果 Rezi 发布了更改结果的模板更新，则分数会随之更改，并且更改日志会如此说明。</p></details>
+<div class="cta">
+<a class="primary" href="#"><div class="t">尝试雷兹 →</div><div class="s">加盟链接·我们可以赚取佣金·价格不变为您服务</div></a>
+<a class="secondary" href="#"><div class="t">不确定您需要建筑商吗？</div><div class="s">首先在您当前的简历上运行我们的免费 ATS Parse 预览 - 2 分钟，无需注册</div></a>
+</div>
+</main>
+<footer>CareerRadar · 求职工具的独立验证实验室 · <a href="#">方法论</a> · <a href="#">我们如何赚钱</a> · 排名不受佣金影响 · © 2026</footer>
+</body>
+</html>

@@ -1,0 +1,170 @@
+html
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rezi 与 Kickresume (2026)：我们针对真实的 ATS 系统对两者进行了测试 — CareerRadar</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#101826; --paper:#FAFBF9; --card:#FFFFFF;
+  --body:#2A3442; --muted:#67748A; --line:#E4E8E4;
+  --ok:#0E9F6E; --ok-bg:#EBF9F3; --ok-line:#B5E8D4;
+  --fail:#DC2626; --fail-bg:#FEF1F1; --fail-line:#F5C6C6;
+  --part:#B45309; --part-bg:#FDF6EC; --part-line:#F0DCB8;
+  --chip:#0F3D5C; --chip-bg:#EDF4F9;
+  --a:#4F46E5; --a-bg:#EEF2FF;   /* Rezi 列 */
+  --b:#B45309; --b-bg:#FDF6EC;   /* Kickresume 列 */
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.72;font-size:16.5px}
+.mock{background:#101826;color:#8DA3BF;font:600 11px/1 var(--mono);letter-spacing:.14em;text-align:center;padding:7px;text-transform:uppercase}
+.mock b{color:#FCD34D}
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav-in{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:14px 24px}
+.logo{font:700 17px var(--sans);color:var(--ink);text-decoration:none}
+.logo span{color:var(--ok)}
+.nav a.lnk{font:500 13.5px var(--sans);color:var(--muted);text-decoration:none}
+.nav .right{margin-left:auto}
+.btn-free{font:600 13px var(--sans);color:var(--ok);border:1.5px solid var(--ok);border-radius:8px;padding:7px 14px;text-decoration:none}
+.disclose{background:#F4F6F8;border-bottom:1px solid #DDE3EA;font-size:13px;color:var(--muted);padding:9px 24px;text-align:center}
+.disclose a{color:var(--ok);font-weight:600}
+
+main{max-width:820px;margin:0 auto;padding:0 24px 80px}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--ok);text-transform:uppercase;margin:44px 0 14px}
+h1{font:700 clamp(28px,4.2vw,40px)/1.2 var(--serif);color:var(--ink);letter-spacing:-.015em;margin-bottom:14px}
+h1 .vs{color:var(--muted);font-style:italic}
+.byline{font-size:13.5px;color:var(--muted);margin-bottom:28px}
+.byline b{color:var(--ink)}
+.chip{display:inline-block;font:600 11.5px var(--mono);color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:1px 8px 2px;text-decoration:none;white-space:nowrap}
+.chip::after{content:" ↗";opacity:.55}
+
+/* verdict box — signature: three-row decision incl. "neither" */
+.verdict{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:44px;box-shadow:0 1px 4px rgba(16,24,38,.05)}
+.verdict .vh{background:var(--ink);color:#fff;padding:14px 24px;font:700 13px var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.vrow{display:flex;gap:18px;padding:19px 24px;border-top:1px solid var(--line);align-items:flex-start}
+.vrow:first-of-type{border-top:none}
+.vpick{flex-shrink:0;width:150px;font:700 15px var(--sans)}
+.vrow.ra .vpick{color:var(--a)} .vrow.rb .vpick{color:var(--b)} .vrow.rn .vpick{color:var(--fail)}
+.vwhy{font-size:15px;color:var(--body)}
+.vwhy b{color:var(--ink)}
+.vrow.rn{background:#FDF9F9}
+@media(max-width:560px){.vrow{flex-direction:column;gap:4px}.vpick{width:auto}}
+
+h2{font:700 clamp(21px,2.8vw,27px)/1.3 var(--serif);color:var(--ink);margin:48px 0 14px;letter-spacing:-.01em}
+p{margin-bottom:15px}
+strong{color:var(--ink)}
+
+/* head-to-head table */
+.h2h{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0}
+.h2h-head{background:#F6F8F6;border-bottom:1px solid var(--line);padding:13px 20px;font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{font:600 11.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 18px;border-bottom:1px solid var(--line)}
+th.ca{color:var(--a)} th.cb{color:var(--b)}
+td{padding:11px 18px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:600;color:var(--ink)}
+.pill{display:inline-block;font:700 11.5px var(--sans);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-line)}
+.p-fail{background:var(--fail-bg);color:var(--fail);border:1px solid var(--fail-line)}
+.p-part{background:var(--part-bg);color:var(--part);border:1px solid var(--part-line)}
+.win{font:700 11px var(--mono);color:var(--ok);letter-spacing:.06em}
+.h2h-cap{padding:12px 20px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+
+/* dimension blocks */
+.dim{border-left:3px solid var(--line);padding:2px 0 2px 20px;margin:24px 0}
+.dim h3{font:700 16.5px var(--sans);color:var(--ink);margin-bottom:8px}
+.dim .w{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.dim.wa{border-color:var(--a)} .dim.wa .w{color:var(--a)}
+.dim.wb{border-color:var(--b)} .dim.wb .w{color:var(--b)}
+.dim.tie{border-color:var(--muted)} .dim.tie .w{color:var(--muted)}
+.dim p{font-size:15px;margin-bottom:6px}
+
+/* faq */
+details{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px;padding:0 20px}
+summary{font:600 15px var(--sans);color:var(--ink);padding:15px 0;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--muted);font-size:18px}
+details[open] summary::after{content:"–"}
+details p{font-size:14.5px;padding-bottom:16px;margin:0}
+
+/* CTA */
+.cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:36px 0 0}
+.cta a{display:block;text-decoration:none;border-radius:14px;padding:20px 22px;transition:transform .12s}
+.cta a:hover{transform:translateY(-2px)}
+.cta .ca{background:var(--a);color:#fff} .cta .cb{background:var(--b);color:#fff}
+.cta .t{font:700 16px var(--sans);margin-bottom:4px}
+.cta .s{font-size:12.5px;opacity:.75}
+.cta .cn{background:var(--ok-bg);border:1.5px solid var(--ok-line)}
+.cta .cn .t{color:var(--ok)} .cta .cn .s{color:var(--muted);opacity:1}
+@media (prefers-reduced-motion:reduce){.cta a{transition:none}}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 24px;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="mock"><b>小样</b> · 内部草稿 · 测试图为样本数据</div>
+<nav class="nav"><div class="nav-in">
+<a class="logo" href="#">职业<span>雷达</span></a>
+<a class="lnk" href="#">研究</a><a class="lnk" href="#">评论</a><a class="lnk" href="#">比较</a>
+<span class="right"></span><a class="btn-free" href="#">免费 ATS 解析预览</a>
+</div></nav>
+<div class="disclose">我们可以通过此页面上的链接赚取佣金。排名是根据我们的 ATS 测试数据生成的 <b>佣金盲法</b> — <a href="#">看看我们如何测试 →</a></div>
+<main>
+<div class="eyebrow">比较 · 简历制作者</div>
+<h1>雷兹 <span class="vs">与</span> Kickresume：相同的测试，不同的失败</h1>
+<div class="byline">经过 <b>职业雷达实验室</b> · 最后验证 <b>2026年6月</b> · 批次 <a class="chip" href="#">GH-2026Q2-雷兹</a> <a class="chip" href="#">GH-2026Q2-踢</a></div>
+<div class="verdict">
+<div class="vh">20秒回答</div>
+<div class="vrow ra">
+<div class="vpick">如果……选择雷兹</div>
+<div class="vwhy">...您正在申请 <b>ATS-重型中型/大型公司</b> 并希望根据职位描述进行关键字定位。它赢得了我们在两个平台上的解析测试，并且 149 美元的终身优惠击败了长时间搜索的订阅。</div>
+</div>
+<div class="vrow rb">
+<div class="vpick">如果...，请选择 Kickresume</div>
+<div class="vwhy">...您的申请也会转到 <b>以人为本</b> — 初创公司、代理机构、与设计相关的角色。它的模板看起来明显更好，而且它的单列模板的解析几乎和 Rezi 的一样好。</div>
+</div>
+<div class="vrow rn">
+<div class="vpick">如果...都不选择</div>
+<div class="vwhy">...您已经有了一份可靠的简历，只需担心 ATS 的可读性。解析的普通单列文档 <b>18/18 在我们的基线运行中</b> — 运行 <a href="#" style="color:var(--ok);font-weight:700">免费 2 分钟解析检查</a> 在向任何人付款之前。</div>
+</div>
+</div>
+<h2>头对头：验证解析结果</h2>
+<p>这两个工具生成相同的虚构候选人的简历（每个模板三个最受欢迎的模板），导出为 PDF，上传到实时 Greenhouse 和 Lever 表单 - 每个模板运行 3 次，无需提交。与我们的协议相同 <a href="#" style="color:var(--ok);font-weight:600">ATS 解析研究</a>.</p>
+<div class="h2h">
+<div class="h2h-head">现场级结果 · 2026 年 6 月</div>
+<table>
+<thead><tr><th>现场组</th><th class="ca">雷兹</th><th class="cb">踢简历</th><th>边缘</th></tr></thead>
+<tbody>
+<tr><td>联系方式</td><td><span class="pill p-ok">通过 18/18</span></td><td><span class="pill p-ok">通过 18/18</span></td><td class="win">领带</td></tr>
+<tr><td>工作经历+日期</td><td><span class="pill p-ok">通过 17/18</span></td><td><span class="pill p-part">部分14/18</span></td><td class="win" style="color:var(--a)">热子</td></tr>
+<tr><td>技能</td><td><span class="pill p-ok">通过 16/18</span></td><td><span class="pill p-fail">失败 11/18</span></td><td class="win" style="color:var(--a)">热子</td></tr>
+<tr><td>教育</td><td><span class="pill p-part">部分17/18</span></td><td><span class="pill p-ok">通过 18/18</span></td><td class="win" style="color:var(--b)">踢</td></tr>
+</tbody>
+</table>
+<div class="h2h-cap">Kickresume 的技能失败全部来自于它的两个“创意”模板，这些模板将技能呈现为评级栏——图形元素解析器掉落，与我们的图标列表发现一致。它的单列“简单”模板通过了每个字段。</div>
+</div>
+<div class="dim wa"><h3>机器可读性 — <span class="w">获胜者：雷兹</span></h3>
+<p>Rezi 的默认设置在设计上是保守的，数据显示：60/72 干净传球 vs Kickresume 的 61/72 <em>仅当</em> 你会避开它的创意模板。选择 Kickresume 的错误模板，您就会默默地失去技能部分。</p></div>
+<div class="dim wb"><h3>为人类读者设计的质量 — <span class="w">获胜者：Kickresume</span></h3>
+<p>并非所有东西都是解析器。对于首先打开 PDF 的角色，Kickresume 的排版和布局选项是一个明显的进步 - Rezi 的导出功能强大但简单。</p></div>
+<div class="dim tie"><h3>AI写作质量—— <span class="w">领带（均为通用）</span></h3>
+<p>老实说：这两种工具的人工智能项目符号都是针对专门角色而设计的。两者都不能取代重写你自己的经历。我们对解析性能进行评分是因为我们可以测量它；我们不会假装给散文评分。</p></div>
+<div class="dim wa"><h3>长时间搜索的定价 — <span class="w">获胜者：雷兹</span></h3>
+<p>Rezi 的终身订阅费为 149 美元，超过了 Kickresume 过去第三个月的订阅费。对于短暂的冲刺，两个月度计划的成本大致相同 - 请注意这两个工具的自动续订默认设置。</p></div>
+<h2>常问问题</h2>
+<details><summary>哪一种更适合通过 ATS 筛查？</summary><p>两者都无法“击败”任何东西——这种框架会贩卖恐惧。我们可以验证的是：Rezi 的默认模板在我们 2026 年 6 月的批次中生成了更完整的字段提取。提取会影响招聘人员能否找到并过滤您；它并不决定面试。</p></details>
+<details><summary>佣金会影响这种比较吗？</summary><p>这两种工具支付的推荐佣金相似，因此无论哪种方式，我们的收入都大致相同——而青色，不向我们支付任何费用，仍然出现在我们的类别排名中，高于预算用户。表中的边缘调用来自您可以自己打开的运行级别记录。</p></details>
+<details><summary>这些结果会改变吗？</summary><p>是的——解析器和模板都会更新。我们每季度重新运行该批次；我们研究页面上的变更日志记录了每一个变更，包括工具的改进。</p></details>
+<div class="cta">
+<a class="ca" href="#"><div class="t">尝试雷兹 →</div><div class="s">附属链接 · 可能会收取佣金</div></a>
+<a class="cb" href="#"><div class="t">尝试 Kickresume →</div><div class="s">附属链接 · 可能会收取佣金</div></a>
+<a class="cn" href="#"><div class="t">免费查看自己的简历</div><div class="s">2 分钟 ATS 解析预览 · 无需注册</div></a>
+</div>
+</main>
+<footer>CareerRadar · 求职工具的独立验证实验室 · <a href="#">方法论</a> · <a href="#">我们如何赚钱</a> · 排名不受佣金影响 · © 2026</footer>
+</body>
+</html>

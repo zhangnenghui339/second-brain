@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Tested 6 Resume Formats Against Real ATS Systems: 2026 Parse Study — CareerRadar Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101826; --paper:#FAFBF9; --card:#FFFFFF;
+  --body:#2A3442; --muted:#67748A; --line:#E4E8E4;
+  --ok:#0E9F6E; --ok-bg:#EBF9F3; --ok-line:#B5E8D4;
+  --fail:#DC2626; --fail-bg:#FEF1F1; --fail-line:#F5C6C6;
+  --part:#B45309; --part-bg:#FDF6EC; --part-line:#F0DCB8;
+  --chip:#0F3D5C; --chip-bg:#EDF4F9;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.72;font-size:16.5px}
+
+.mock{background:#101826;color:#8DA3BF;font:600 11px/1 var(--mono);letter-spacing:.14em;text-align:center;padding:7px;text-transform:uppercase}
+.mock b{color:#FCD34D}
+
+/* nav */
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav-in{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:14px 24px}
+.logo{font:700 17px var(--sans);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--ok)}
+.nav a.lnk{font:500 13.5px var(--sans);color:var(--muted);text-decoration:none}
+.nav a.lnk:hover{color:var(--ink)}
+.nav .right{margin-left:auto}
+.btn-free{font:600 13px var(--sans);color:var(--ok);border:1.5px solid var(--ok);border-radius:8px;padding:7px 14px;text-decoration:none}
+.btn-free:hover{background:var(--ok-bg)}
+
+main{max-width:1020px;margin:0 auto;padding:0 24px 80px}
+article{max-width:760px;margin:0 auto}
+.wide{max-width:1020px;margin-left:calc(50% - 510px)}
+@media(max-width:1080px){.wide{max-width:100%;margin-left:0}}
+
+/* header */
+.eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--ok);text-transform:uppercase;margin:52px 0 16px}
+h1{font:700 clamp(30px,4.6vw,46px)/1.18 var(--serif);color:var(--ink);letter-spacing:-.015em;margin-bottom:20px}
+.standfirst{font-size:19px;color:var(--muted);max-width:640px;margin-bottom:26px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;font:500 13px var(--mono);color:var(--muted);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;margin-bottom:40px}
+.meta b{color:var(--ink);font-weight:600}
+.meta .verified-dot{color:var(--ok)}
+
+/* evidence chip — signature element */
+.chip{display:inline-block;font:600 11.5px var(--mono);color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:1px 8px 2px;text-decoration:none;white-space:nowrap;vertical-align:baseline;letter-spacing:.02em}
+.chip:hover{background:#DFEDF7}
+.chip::after{content:" ↗";opacity:.55}
+
+/* TLDR */
+.tldr{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:26px 30px;margin-bottom:52px}
+.tldr h2{font:700 13px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ok);margin-bottom:16px}
+.tldr li{list-style:none;padding-left:26px;position:relative;margin-bottom:13px;font-size:16px;color:var(--ink)}
+.tldr li::before{content:"§";position:absolute;left:2px;top:0;font:700 15px var(--serif);color:var(--ok)}
+.tldr li:last-child{margin-bottom:0}
+
+h2.sec{font:700 clamp(23px,3vw,30px)/1.3 var(--serif);color:var(--ink);margin:56px 0 8px;letter-spacing:-.01em}
+h2.sec .no{color:var(--ok)}
+.sec-sub{color:var(--muted);margin-bottom:22px;font-size:15.5px}
+p{margin-bottom:16px}
+strong{color:var(--ink)}
+
+/* data table */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);margin:22px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 16px;border-bottom:2px solid var(--line);background:#F6F8F6}
+td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top;color:var(--body)}
+td.v{font-family:var(--mono);font-size:13px}
+.pill{display:inline-block;font:700 11.5px var(--sans);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-line)}
+.p-fail{background:var(--fail-bg);color:var(--fail);border:1px solid var(--fail-line)}
+.p-part{background:var(--part-bg);color:var(--part);border:1px solid var(--part-line)}
+
+/* evidence mock screenshot */
+.evidence{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:24px 0;overflow:hidden}
+.ev-bar{display:flex;align-items:center;gap:10px;background:#F1F4F1;border-bottom:1px solid var(--line);padding:9px 16px;font:600 11.5px var(--mono);color:var(--muted);letter-spacing:.06em}
+.ev-bar .dot{width:9px;height:9px;border-radius:50%;background:#D7DDD7}
+.ev-body{padding:22px 26px;background:linear-gradient(180deg,#FFFFFF,#FBFCFB)}
+.ev-form{max-width:430px}
+.ev-field{margin-bottom:14px}
+.ev-label{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#8A94A6;margin-bottom:4px}
+.ev-input{border:1px solid #D8DEE6;border-radius:7px;padding:9px 12px;font:500 14px var(--sans);color:var(--ink);background:#fff}
+.ev-input.empty{color:#B7C0CC;font-style:italic;border-color:var(--fail-line);background:var(--fail-bg)}
+.ev-cap{padding:12px 26px;border-top:1px dashed var(--line);font:500 13px var(--sans);color:var(--muted)}
+.ev-cap b{color:var(--fail)}
+
+/* quotable */
+.quote{border:1px dashed var(--ok-line);background:var(--ok-bg);border-radius:10px;padding:16px 20px;margin:20px 0;font-size:15.5px;color:var(--ink)}
+.quote .ql{font:700 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ok);display:block;margin-bottom:6px}
+
+/* limitations */
+.limits{background:#F4F6F8;border:1px solid #DDE3EA;border-radius:12px;padding:26px 30px;margin:26px 0}
+.limits h3{font:700 16px var(--sans);color:var(--ink);margin-bottom:12px}
+
+/* cite */
+.cite{background:var(--ink);color:#C6D2E2;border-radius:14px;padding:30px 32px;margin:30px 0}
+.cite h3{font:700 20px var(--serif);color:#fff;margin-bottom:14px}
+.cite code{display:block;font:500 13px var(--mono);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:14px 16px;color:#DCE6F2;line-height:1.6;margin:10px 0 18px;overflow-x:auto}
+.cite .small{font-size:13px;color:#8DA3BF}
+
+/* changelog */
+.log{border-left:2px solid var(--line);padding-left:22px;margin:20px 0}
+.log-item{margin-bottom:14px;font-size:14.5px}
+.log-item .d{font:600 12px var(--mono);color:var(--ok)}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 24px;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--muted)}
+@media(max-width:640px){.eyebrow{margin-top:36px}.tldr{padding:20px}}
+</style>
+</head>
+<body>
+
+<div class="mock"><b>MOCKUP</b> · internal draft · all figures are sample data from the Day 1–14 pilot batch</div>
+
+<nav class="nav"><div class="nav-in">
+  <a class="logo" href="#">Career<span>Radar</span></a>
+  <a class="lnk" href="#">Research</a><a class="lnk" href="#">Reviews</a><a class="lnk" href="#">Compare</a>
+  <span class="right"></span>
+  <a class="btn-free" href="#">Free ATS Parse Preview</a>
+</div></nav>
+
+<main><article>
+
+<div class="eyebrow">CareerRadar Research · ATS Parse Study</div>
+<h1>We uploaded 6 resume formats to real ATS systems. Here's exactly what broke.</h1>
+<p class="standfirst">Most "ATS-friendly" advice is guesswork. We built six controlled resume variants — identical text, one formatting variable changed at a time — and ran each through live Greenhouse and Lever application pipelines, three times, across three different companies.</p>
+
+<div class="meta">
+  <span><span class="verified-dot">●</span> <b>Data verified:</b> Jun 2026</span>
+  <span><b>Method:</b> v1.0 (<a href="#methodology" style="color:inherit">full protocol</a>)</span>
+  <span><b>Test runs:</b> 54 uploads</span>
+  <span><b>Repeat consistency:</b> 94%</span>
+  <span><b>Affiliate links on this page:</b> none</span>
+</div>
+
+<section class="tldr">
+  <h2>Key findings — cite freely, method linked</h2>
+  <ul>
+    <li>In our June 2026 test of 6 resume variants, <strong>icon-based skill lists failed to parse in Greenhouse 85% of the time</strong> — the skills field was returned empty. <a class="chip" href="#f1">GH-2026Q2-V03</a></li>
+    <li><strong>Two-column layouts lost or reordered work-history dates in 67% of Lever runs</strong>, while parsing cleanly in Greenhouse. <a class="chip" href="#f2">LV-2026Q2-V04</a></li>
+    <li><strong>Plain single-column resumes parsed all 10 fields correctly in 100% of runs</strong> on both systems — the baseline never failed. <a class="chip" href="#f3">ALL-2026Q2-V01</a></li>
+    <li>Contact details placed in the <strong>page header lost the phone number in 33% of Greenhouse runs</strong>. <a class="chip" href="#f4">GH-2026Q2-V06</a></li>
+    <li>Contrary to common advice, <strong>simple tables did not break parsing</strong> in either system (0 failures across 18 runs). <a class="chip" href="#f5">ALL-2026Q2-V02</a></li>
+  </ul>
+</section>
+
+<h2 class="sec" id="f1"><span class="no">Finding 1.</span> Icon skill lists are the single biggest silent failure</h2>
+<p class="sec-sub">Variant V03 · identical to baseline except skills rendered as “● Python ▸ SQL ◆ AWS”</p>
+<p>Across nine Greenhouse uploads at three companies, the parsed <strong>Skills field came back empty in 85% of runs</strong> — no error shown to the applicant, the field is simply blank on the other side. If a recruiter later searches candidates by skill keyword, this resume doesn't surface.</p>
+
+<div class="evidence">
+  <div class="ev-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span> REPRODUCTION OF TEST EVIDENCE · GH-2026Q2-V03 · RUN 2 OF 3</div>
+  <div class="ev-body"><div class="ev-form">
+    <div class="ev-field"><div class="ev-label">Full name</div><div class="ev-input">Alex Chen</div></div>
+    <div class="ev-field"><div class="ev-label">Email</div><div class="ev-input">alex.chen@…</div></div>
+    <div class="ev-field"><div class="ev-label">Current company</div><div class="ev-input">Meridian Labs</div></div>
+    <div class="ev-field"><div class="ev-label">Skills</div><div class="ev-input empty">No skills detected</div></div>
+  </div></div>
+  <div class="ev-cap">Autofill result after uploading V03. Name, email and employer parsed correctly; <b>the entire skills section was dropped</b>. The identical resume with plain-text skills (V01) parsed 10/10 fields in the same pipeline.</div>
+</div>
+
+<div class="quote"><span class="ql">Quotable · self-contained</span>“In CareerRadar's June 2026 controlled test, resumes using icon-based skill lists failed to parse skills in Greenhouse 85% of the time, while the identical plain-text version parsed correctly in every run.”</div>
+
+<h2 class="sec" id="f2"><span class="no">Finding 2.</span> Two-column layouts fail differently on different systems</h2>
+<p class="sec-sub">Variant V04 · identical content, left sidebar + right main column</p>
+<p>This is where generic “ATS-friendly” advice falls apart: the same file behaved differently per system. Greenhouse read the two-column variant cleanly in 8 of 9 runs. <strong>Lever merged the columns into a single text stream, scrambling work-history dates in 67% of runs</strong> — end dates attached to the wrong role, or the most recent position dropped entirely.</p>
+
+<div class="wide"><div class="tblwrap"><table>
+  <thead><tr><th>Field</th><th>Greenhouse (9 runs)</th><th>Lever (9 runs)</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Name / email / phone</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-ok">Pass 9/9</span></td><td class="v">V04-contact</td></tr>
+    <tr><td>Work history — titles</td><td><span class="pill p-ok">Pass 8/9</span></td><td><span class="pill p-part">Partial 5/9</span></td><td class="v">V04-titles</td></tr>
+    <tr><td>Work history — dates</td><td><span class="pill p-ok">Pass 8/9</span></td><td><span class="pill p-fail">Fail 6/9</span></td><td class="v">V04-dates</td></tr>
+    <tr><td>Skills</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-part">Partial 4/9</span></td><td class="v">V04-skills</td></tr>
+  </tbody>
+</table></div></div>
+
+<h2 class="sec" id="f3"><span class="no">Finding 3.</span> The boring baseline never failed once</h2>
+<p>V01 — single column, standard font, plain text, contact details in the body — parsed <strong>all 10 tracked fields correctly in 18 of 18 runs</strong> across both systems. Every failure we recorded in this study was introduced by a single formatting choice layered on top of this baseline. <a class="chip" href="#matrix">ALL-2026Q2-V01</a></p>
+
+<h2 class="sec" id="matrix">Full results matrix</h2>
+<p class="sec-sub">Pass = all 10 fields extracted · Partial = 1–2 fields degraded · Fail = ≥3 fields lost. Each cell links to run-level records.</p>
+<div class="wide"><div class="tblwrap"><table>
+  <thead><tr><th>Variant (one variable changed)</th><th>Greenhouse</th><th>Lever</th><th>Records</th></tr></thead>
+  <tbody>
+    <tr><td><strong>V01</strong> Baseline — single column, plain text</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-ok">Pass 9/9</span></td><td class="v"><a class="chip" href="#">ALL-V01</a></td></tr>
+    <tr><td><strong>V02</strong> Work history in a simple table</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-ok">Pass 9/9</span></td><td class="v"><a class="chip" href="#">ALL-V02</a></td></tr>
+    <tr><td><strong>V03</strong> Icon-based skill list</td><td><span class="pill p-fail">Fail 85%</span></td><td><span class="pill p-part">Partial 44%</span></td><td class="v"><a class="chip" href="#">ALL-V03</a></td></tr>
+    <tr><td><strong>V04</strong> Two-column layout</td><td><span class="pill p-ok">Pass 8/9</span></td><td><span class="pill p-fail">Fail 67%</span></td><td class="v"><a class="chip" href="#">ALL-V04</a></td></tr>
+    <tr><td><strong>V05</strong> Non-standard display font</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-part">Partial 22%</span></td><td class="v"><a class="chip" href="#">ALL-V05</a></td></tr>
+    <tr><td><strong>V06</strong> Contact details in page header</td><td><span class="pill p-part">Phone lost 33%</span></td><td><span class="pill p-ok">Pass 9/9</span></td><td class="v"><a class="chip" href="#">ALL-V06</a></td></tr>
+  </tbody>
+</table></div></div>
+
+<h2 class="sec" id="methodology">Methodology</h2>
+<p><strong>Controlled variants.</strong> One fictional candidate profile, frozen text. Each variant changes exactly one formatting variable against the V01 baseline; all files exported from the same editor to PDF under an identical filename.</p>
+<p><strong>Live pipelines, no submissions.</strong> Each variant was uploaded to real application forms on live job postings and the autofill parse result recorded field-by-field (10 fields). No application was ever submitted; pages were closed after capture. Runs used fresh private-browsing sessions.</p>
+<p><strong>Separating engine behavior from company configuration.</strong> Each variant × system combination was repeated at three different companies. A failure that reproduces across all three is attributed to the parsing engine; single-company anomalies are logged separately and excluded from headline rates.</p>
+<p><strong>Reproducibility.</strong> Field-level repeat consistency across the batch was 94%. The full run log is available as CSV: <a class="chip" href="#">Download dataset (CSV)</a> — free, email required.</p>
+
+<div class="limits">
+  <h3>What this study does — and doesn't — show</h3>
+  <p style="margin-bottom:10px">We verify <strong>field extraction and searchability</strong>: whether the structured data an ATS pulls from your resume is complete and correct. In systems like Greenhouse, recruiters can usually also open your original PDF — so a parse failure doesn't make your resume invisible, it makes you <strong>unsearchable and mis-summarized</strong> in candidate lists and keyword filters.</p>
+  <p style="margin-bottom:0">And to be direct: <strong>parsing correctly does not get you an interview.</strong> Content quality, role fit, and market competition matter more. This study removes one variable — it doesn't promise an outcome. Anyone who tells you otherwise is selling fear.</p>
+</div>
+
+<div class="cite">
+  <h3>Cite this study</h3>
+  <code>CareerRadar Research (2026). ATS Parse Study: controlled resume-format testing on live Greenhouse and Lever pipelines. https://careerradar.io/research/ats-parse-study</code>
+  <p class="small">Charts on this page may be embedded freely with attribution — the embed snippet includes a canonical link back to this study. Journalists: we're happy to run custom variants on request.</p>
+</div>
+
+<h2 class="sec">Changelog</h2>
+<div class="log">
+  <div class="log-item"><span class="d">2026-06</span> — v1.0 published: 6 variants × Greenhouse + Lever × 3 repeats (54 runs).</div>
+  <div class="log-item"><span class="d">Planned Q3</span> — Extend to 20 variants; add a third platform; first tool-generated resumes enter the matrix.</div>
+</div>
+
+<p style="margin-top:36px;padding:18px 22px;background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px"><strong>Want to see what an ATS extracts from <em>your</em> resume?</strong> Our free Parse Preview walks you through running this exact check on your own file in about two minutes — no signup needed. <a href="#" style="color:var(--ok);font-weight:700">Try the free preview →</a></p>
+
+</article></main>
+
+<footer>CareerRadar · An independent verification lab for job-search tools · <a href="#">Methodology</a> · <a href="#">How we make money</a> · Rankings are commission-blind · © 2026</footer>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+html
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>我们针对真实 ATS 系统测试了 6 种简历格式：2026 Parse 研究 — CareerRadar Research</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#101826; --paper:#FAFBF9; --card:#FFFFFF;
+  --body:#2A3442; --muted:#67748A; --line:#E4E8E4;
+  --ok:#0E9F6E; --ok-bg:#EBF9F3; --ok-line:#B5E8D4;
+  --fail:#DC2626; --fail-bg:#FEF1F1; --fail-line:#F5C6C6;
+  --part:#B45309; --part-bg:#FDF6EC; --part-line:#F0DCB8;
+  --chip:#0F3D5C; --chip-bg:#EDF4F9;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.72;font-size:16.5px}
+
+.mock{background:#101826;color:#8DA3BF;font:600 11px/1 var(--mono);letter-spacing:.14em;text-align:center;padding:7px;text-transform:uppercase}
+.mock b{color:#FCD34D}
+
+/* nav */
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav-in{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:14px 24px}
+.logo{font:700 17px var(--sans);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--ok)}
+.nav a.lnk{font:500 13.5px var(--sans);color:var(--muted);text-decoration:none}
+.nav a.lnk:hover{color:var(--ink)}
+.nav .right{margin-left:auto}
+.btn-free{font:600 13px var(--sans);color:var(--ok);border:1.5px solid var(--ok);border-radius:8px;padding:7px 14px;text-decoration:none}
+.btn-free:hover{background:var(--ok-bg)}
+
+main{max-width:1020px;margin:0 auto;padding:0 24px 80px}
+article{max-width:760px;margin:0 auto}
+.wide{max-width:1020px;margin-left:calc(50% - 510px)}
+@media(max-width:1080px){.wide{max-width:100%;margin-left:0}}
+
+/* header */
+.eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--ok);text-transform:uppercase;margin:52px 0 16px}
+h1{font:700 clamp(30px,4.6vw,46px)/1.18 var(--serif);color:var(--ink);letter-spacing:-.015em;margin-bottom:20px}
+.standfirst{font-size:19px;color:var(--muted);max-width:640px;margin-bottom:26px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;font:500 13px var(--mono);color:var(--muted);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;margin-bottom:40px}
+.meta b{color:var(--ink);font-weight:600}
+.meta .verified-dot{color:var(--ok)}
+
+/* evidence chip — signature element */
+.chip{display:inline-block;font:600 11.5px var(--mono);color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:1px 8px 2px;text-decoration:none;white-space:nowrap;vertical-align:baseline;letter-spacing:.02em}
+.chip:hover{background:#DFEDF7}
+.chip::after{content:" ↗";opacity:.55}
+
+/* TLDR */
+.tldr{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:26px 30px;margin-bottom:52px}
+.tldr h2{font:700 13px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ok);margin-bottom:16px}
+.tldr li{list-style:none;padding-left:26px;position:relative;margin-bottom:13px;font-size:16px;color:var(--ink)}
+.tldr li::before{content:"§";position:absolute;left:2px;top:0;font:700 15px var(--serif);color:var(--ok)}
+.tldr li:last-child{margin-bottom:0}
+
+h2.sec{font:700 clamp(23px,3vw,30px)/1.3 var(--serif);color:var(--ink);margin:56px 0 8px;letter-spacing:-.01em}
+h2.sec .no{color:var(--ok)}
+.sec-sub{color:var(--muted);margin-bottom:22px;font-size:15.5px}
+p{margin-bottom:16px}
+strong{color:var(--ink)}
+
+/* data table */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);margin:22px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 16px;border-bottom:2px solid var(--line);background:#F6F8F6}
+td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top;color:var(--body)}
+td.v{font-family:var(--mono);font-size:13px}
+.pill{display:inline-block;font:700 11.5px var(--sans);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-line)}
+.p-fail{background:var(--fail-bg);color:var(--fail);border:1px solid var(--fail-line)}
+.p-part{background:var(--part-bg);color:var(--part);border:1px solid var(--part-line)}
+
+/* evidence mock screenshot */
+.evidence{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:24px 0;overflow:hidden}
+.ev-bar{display:flex;align-items:center;gap:10px;background:#F1F4F1;border-bottom:1px solid var(--line);padding:9px 16px;font:600 11.5px var(--mono);color:var(--muted);letter-spacing:.06em}
+.ev-bar .dot{width:9px;height:9px;border-radius:50%;background:#D7DDD7}
+.ev-body{padding:22px 26px;background:linear-gradient(180deg,#FFFFFF,#FBFCFB)}
+.ev-form{max-width:430px}
+.ev-field{margin-bottom:14px}
+.ev-label{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#8A94A6;margin-bottom:4px}
+.ev-input{border:1px solid #D8DEE6;border-radius:7px;padding:9px 12px;font:500 14px var(--sans);color:var(--ink);background:#fff}
+.ev-input.empty{color:#B7C0CC;font-style:italic;border-color:var(--fail-line);background:var(--fail-bg)}
+.ev-cap{padding:12px 26px;border-top:1px dashed var(--line);font:500 13px var(--sans);color:var(--muted)}
+.ev-cap b{color:var(--fail)}
+
+/* quotable */
+.quote{border:1px dashed var(--ok-line);background:var(--ok-bg);border-radius:10px;padding:16px 20px;margin:20px 0;font-size:15.5px;color:var(--ink)}
+.quote .ql{font:700 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ok);display:block;margin-bottom:6px}
+
+/* limitations */
+.limits{background:#F4F6F8;border:1px solid #DDE3EA;border-radius:12px;padding:26px 30px;margin:26px 0}
+.limits h3{font:700 16px var(--sans);color:var(--ink);margin-bottom:12px}
+
+/* cite */
+.cite{background:var(--ink);color:#C6D2E2;border-radius:14px;padding:30px 32px;margin:30px 0}
+.cite h3{font:700 20px var(--serif);color:#fff;margin-bottom:14px}
+.cite code{display:block;font:500 13px var(--mono);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:14px 16px;color:#DCE6F2;line-height:1.6;margin:10px 0 18px;overflow-x:auto}
+.cite .small{font-size:13px;color:#8DA3BF}
+
+/* changelog */
+.log{border-left:2px solid var(--line);padding-left:22px;margin:20px 0}
+.log-item{margin-bottom:14px;font-size:14.5px}
+.log-item .d{font:600 12px var(--mono);color:var(--ok)}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 24px;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--muted)}
+@media(max-width:640px){.eyebrow{margin-top:36px}.tldr{padding:20px}}
+</style>
+</head>
+<body>
+<div class="mock"><b>小样</b> · 内部草案 · 所有数据均为第 1-14 天试点批次的样本数据</div>
+<nav class="nav"><div class="nav-in">
+<a class="logo" href="#">职业<span>雷达</span></a>
+<a class="lnk" href="#">研究</a><a class="lnk" href="#">评论</a><a class="lnk" href="#">比较</a>
+<span class="right"></span>
+<a class="btn-free" href="#">免费 ATS 解析预览</a>
+</div></nav>
+<main><article>
+<div class="eyebrow">CareerRadar 研究 · ATS 解析研究</div>
+<h1>我们将 6 种简历格式上传到真实的 ATS 系统。这正是损坏的地方。</h1>
+<p class="standfirst">大多数“ATS 友好”建议都是猜测。我们构建了六个受控简历变体——相同的文本，一次更改一个格式变量——并在三个不同的公司通过实时 Greenhouse 和 Lever 应用程序管道运行每个变体三次。</p>
+<div class="meta">
+<span><span class="verified-dot">●</span> <b>数据核实：</b> 2026年6月</span>
+<span><b>方法：</b> v1.0（<a href="#methodology" style="color:inherit">完整协议</a>)</span>
+<span><b>测试运行：</b> 54 次上传</span>
+<span><b>重复一致性：</b> 94%</span>
+<span><b>此页面上的附属链接：</b> 没有任何</span>
+</div>
+<section class="tldr">
+<h2>主要发现——自由引用，方法相关</h2>
+<ul>
+<li>在我们 2026 年 6 月对 6 种简历变体的测试中， <strong>基于图标的技能列表在 Greenhouse 中 85% 的时间无法解析</strong> — 技能字段返回为空。 <a class="chip" href="#f1">GH-2026Q2-V03</a></li>
+<li><strong>在 67% 的 Lever 运行中，两列布局丢失或重新排序了工作历史日期</strong>，同时在 Greenhouse 中进行干净的解析。 <a class="chip" href="#f2">LV-2026Q2-V04</a></li>
+<li><strong>普通单列恢复在 100% 的运行中正确解析了所有 10 个字段</strong> 在这两个系统上——基线从未失败。 <a class="chip" href="#f3">ALL-2026Q2-V01</a></li>
+<li>联系方式位于 <strong>33% 的 Greenhouse 运行中页面标题丢失了电话号码</strong>. <a class="chip" href="#f4">GH-2026Q2-V06</a></li>
+<li>与通常的建议相反， <strong>简单的表不会破坏解析</strong> 在任一系统中（18 次运行 0 次失败）。 <a class="chip" href="#f5">ALL-2026Q2-V02</a></li>
+</ul>
+</section>
+<h2 class="sec" id="f1"><span class="no">发现 1.</span> 图标技能列表是最大的无声失败</h2>
+<p class="sec-sub">变体 V03 · 与基线相同，除了技能呈现为“● Python ▸ SQL ◆ AWS”</p>
+<p>在三个公司的九个 Greenhouse 上传中，解析的 <strong>85% 的跑动中技能栏为空</strong> — 没有向申请人显示任何错误，该字段的另一侧只是空白。如果招聘人员稍后通过技能关键字搜索候选人，则该简历不会出现。</p>
+<div class="evidence">
+<div class="ev-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span> 测试证据的再现 · GH-2026Q2-V03 · 运行 2 of 3</div>
+<div class="ev-body"><div class="ev-form">
+<div class="ev-field"><div class="ev-label">姓名</div><div class="ev-input">亚历克斯·陈</div></div>
+<div class="ev-field"><div class="ev-label">电子邮件</div><div class="ev-input">亚历克斯·陈@…</div></div>
+<div class="ev-field"><div class="ev-label">现任职公司</div><div class="ev-input">子午线实验室</div></div>
+<div class="ev-field"><div class="ev-label">技能</div><div class="ev-input empty">未检测到技能</div></div>
+</div></div>
+<div class="ev-cap">上传 V03 后自动填充结果。姓名、电子邮件和雇主解析正确； <b>整个技能部分被删除</b>。具有纯文本技能（V01）的相同简历在同一管道中解析了 10/10 字段。</div>
+</div>
+<div class="quote"><span class="ql">可引用·自成一体</span>“在 CareerRadar 2026 年 6 月的受控测试中，使用基于图标的技能列表的简历在 85% 的情况下无法解析 Greenhouse 中的技能，而相同的纯文本版本在每次运行中都能正确解析。”</div>
+<h2 class="sec" id="f2"><span class="no">发现2.</span> 两列布局在不同系统上的失败情况不同</h2>
+<p class="sec-sub">变体V04·内容相同，左侧边栏+右侧主栏</p>
+<p>这就是通用的“ATS 友好”建议失效的地方：同一文件在每个系统上的行为不同。 Greenhouse 在 9 次运行中的 8 次中清楚地读取了两列变体。 <strong>Lever 将各列合并为单个文本流，在 67% 的运行中打乱了工作历史日期</strong> — 结束日期附加到错误的角色，或者最近的职位完全下降。</p>
+<div class="wide"><div class="tblwrap"><table>
+<thead><tr><th>场地</th><th>温室（9 次）</th><th>杠杆（9 次运行）</th><th>证据</th></tr></thead>
+<tbody>
+<tr><td>姓名/电子邮件/电话</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-ok">通过 9/9</span></td><td class="v">V04-接触式</td></tr>
+<tr><td>工作经历——职称</td><td><span class="pill p-ok">通过 8/9</span></td><td><span class="pill p-part">部分5/9</span></td><td class="v">V04-标题</td></tr>
+<tr><td>工作经历——日期</td><td><span class="pill p-ok">通过 8/9</span></td><td><span class="pill p-fail">失败 6/9</span></td><td class="v">V04-日期</td></tr>
+<tr><td>技能</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-part">部分4/9</span></td><td class="v">V04-技能</td></tr>
+</tbody>
+</table></div></div>
+<h2 class="sec" id="f3"><span class="no">发现3.</span> 无聊的基线从未失败过一次</h2>
+<p>V01 — 单列、标准字体、纯文本、正文中的联系方式 — 已解析 <strong>18 次运行中有 18 次正确地完成了所有 10 个跟踪字段</strong> 跨两个系统。我们在本研究中记录的每一次失败都是由在此基线之上的单一格式选择引起的。 <a class="chip" href="#matrix">ALL-2026Q2-V01</a></p>
+<h2 class="sec" id="matrix">完整结果矩阵</h2>
+<p class="sec-sub">通过 = 提取所有 10 个字段 · 部分 = 1–2 个字段降级 · 失败 = ≥3 个字段丢失。每个单元格都链接到运行级别记录。</p>
+<div class="wide"><div class="tblwrap"><table>
+<thead><tr><th>变体（改变了一个变量）</th><th>温室</th><th>杠杆</th><th>记录</th></tr></thead>
+<tbody>
+<tr><td><strong>V01</strong> 基线 — 单列、纯文本</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-ok">通过 9/9</span></td><td class="v"><a class="chip" href="#">全部-V01</a></td></tr>
+<tr><td><strong>V02</strong> 工作历史记录在一个简单的表格中</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-ok">通过 9/9</span></td><td class="v"><a class="chip" href="#">全部-V02</a></td></tr>
+<tr><td><strong>V03</strong> 基于图标的技能列表</td><td><span class="pill p-fail">失败 85%</span></td><td><span class="pill p-part">部分 44%</span></td><td class="v"><a class="chip" href="#">全部-V03</a></td></tr>
+<tr><td><strong>V04</strong> 两列布局</td><td><span class="pill p-ok">通过 8/9</span></td><td><span class="pill p-fail">失败 67%</span></td><td class="v"><a class="chip" href="#">全部-V04</a></td></tr>
+<tr><td><strong>V05</strong> 非标准显示字体</td><td><span class="pill p-ok">通过 9/9</span></td><td><span class="pill p-part">部分22%</span></td><td class="v"><a class="chip" href="#">全部-V05</a></td></tr>
+<tr><td><strong>V06</strong> 页眉中的联系方式</td><td><span class="pill p-part">手机丢失 33%</span></td><td><span class="pill p-ok">通过 9/9</span></td><td class="v"><a class="chip" href="#">全部-V06</a></td></tr>
+</tbody>
+</table></div></div>
+<h2 class="sec" id="methodology">方法论</h2>
+<p><strong>受控变体。</strong> 一份虚构的候选人简介，冻结的文本。每个变体都相对于 V01 基线精确地更改了一个格式变量；从同一编辑器导出到 PDF 的所有文件都具有相同的文件名。</p>
+<p><strong>实时管道，没有提交。</strong> 每个变体都上传到实时职位发布的真实申请表中，并逐个字段（10 个字段）记录自动填充解析结果。从未提交过申请；捕获后页面被关闭。运行新的私密浏览会话。</p>
+<p><strong>将引擎行为与公司配置分开。</strong> 每个变体×系统组合在三个不同的公司重复。在这三者中重现的故障归因于解析引擎；单一公司的异常情况单独记录并排除在总体利率之外。</p>
+<p><strong>再现性。</strong> 整个批次的现场级重复一致性为 94%。完整的运行日志以 CSV 格式提供： <a class="chip" href="#">下载数据集 (CSV)</a> — 免费，需要电子邮件。</p>
+<div class="limits">
+<h3>这项研究表明了什么——没有表明什么</h3>
+<p style="margin-bottom:10px">我们验证 <strong>字段提取和可搜索性</strong>：ATS 从您的简历中提取的结构化数据是否完整且正确。在像 Greenhouse 这样的系统中，招聘人员通常还可以打开您的原始 PDF，因此解析失败不会使您的简历不可见，而是让您 <strong>无法搜索和错误总结</strong> 在候选列表和关键字过滤器中。</p>
+<p style="margin-bottom:0">直接说： <strong>正确解析并不能让你获得面试机会。</strong> 内容质量、角色契合度和市场竞争更重要。这项研究消除了一个变量——它不承诺结果。任何告诉你其他情况的人都是在兜售恐惧。</p>
+</div>
+<div class="cite">
+<h3>引用这项研究</h3>
+<code>职业雷达研究 (2026)。 ATS Parse 研究：对实时 Greenhouse 和 Lever 管道进行受控简历格式测试。 https://careerradar.io/research/ats-parse-study</code>
+<p class="small">此页面上的图表可以通过归属自由嵌入 - 嵌入片段包含返回本研究的规范链接。记者：我们很乐意根据要求运行自定义变体。</p>
+</div>
+<h2 class="sec">变更日志</h2>
+<div class="log">
+<div class="log-item"><span class="d">2026-06</span> — v1.0 已发布：6 个变体 × Greenhouse + Lever × 3 次重复（54 次运行）。</div>
+<div class="log-item"><span class="d">计划第三季度</span> — 扩展到 20 个变体；添加第三个平台；第一份工具生成的简历进入矩阵。</div>
+</div>
+<p style="margin-top:36px;padding:18px 22px;background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px"><strong>想看看 ATS 从中提取什么 <em>你的</em> 恢复？</strong> 我们的免费解析预览将引导您在大约两分钟内对您自己的文件进行精确检查 - 无需注册。 <a href="#" style="color:var(--ok);font-weight:700">尝试免费预览 →</a></p>
+</article></main>
+<footer>CareerRadar · 求职工具的独立验证实验室 · <a href="#">方法论</a> · <a href="#">我们如何赚钱</a> · 排名不受佣金影响 · © 2026</footer>
+</body>
+</html>

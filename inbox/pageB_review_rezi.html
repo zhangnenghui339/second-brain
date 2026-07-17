@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rezi Review 2026: We Tested It Against Real ATS Systems — CareerRadar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101826; --paper:#FAFBF9; --card:#FFFFFF;
+  --body:#2A3442; --muted:#67748A; --line:#E4E8E4;
+  --ok:#0E9F6E; --ok-bg:#EBF9F3; --ok-line:#B5E8D4;
+  --fail:#DC2626; --fail-bg:#FEF1F1; --fail-line:#F5C6C6;
+  --part:#B45309; --part-bg:#FDF6EC; --part-line:#F0DCB8;
+  --chip:#0F3D5C; --chip-bg:#EDF4F9;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.72;font-size:16.5px}
+.mock{background:#101826;color:#8DA3BF;font:600 11px/1 var(--mono);letter-spacing:.14em;text-align:center;padding:7px;text-transform:uppercase}
+.mock b{color:#FCD34D}
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav-in{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:14px 24px}
+.logo{font:700 17px var(--sans);color:var(--ink);text-decoration:none}
+.logo span{color:var(--ok)}
+.nav a.lnk{font:500 13.5px var(--sans);color:var(--muted);text-decoration:none}
+.nav .right{margin-left:auto}
+.btn-free{font:600 13px var(--sans);color:var(--ok);border:1.5px solid var(--ok);border-radius:8px;padding:7px 14px;text-decoration:none}
+
+/* disclosure — top, not footer */
+.disclose{background:#F4F6F8;border-bottom:1px solid #DDE3EA;font-size:13px;color:var(--muted);padding:9px 24px;text-align:center}
+.disclose a{color:var(--ok);font-weight:600}
+
+main{max-width:780px;margin:0 auto;padding:0 24px 80px}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--ok);text-transform:uppercase;margin:44px 0 14px}
+h1{font:700 clamp(28px,4.2vw,40px)/1.2 var(--serif);color:var(--ink);letter-spacing:-.015em;margin-bottom:16px}
+.byline{font-size:13.5px;color:var(--muted);margin-bottom:24px}
+.byline b{color:var(--ink)}
+
+/* verified badge */
+.vbadge{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px;padding:14px 18px;margin-bottom:30px}
+.vbadge .mark{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;font:700 18px var(--sans)}
+.vbadge .t{font:700 15px var(--sans);color:var(--ink)}
+.vbadge .s{font:500 13px var(--sans);color:var(--muted)}
+.chip{display:inline-block;font:600 11.5px var(--mono);color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:1px 8px 2px;text-decoration:none;white-space:nowrap}
+.chip::after{content:" ↗";opacity:.55}
+
+/* quick answer */
+.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-bottom:40px;box-shadow:0 1px 3px rgba(16,24,38,.04)}
+.qa .label{font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ok);margin-bottom:12px}
+.qa .score{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.qa .num{font:700 44px var(--serif);color:var(--ink)}
+.qa .of{font:500 15px var(--sans);color:var(--muted)}
+.qa p{font-size:16px;color:var(--ink)}
+.qa .note{font:500 12.5px var(--mono);color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+
+h2{font:700 clamp(21px,2.8vw,27px)/1.3 var(--serif);color:var(--ink);margin:48px 0 14px;letter-spacing:-.01em}
+p{margin-bottom:15px}
+strong{color:var(--ink)}
+
+/* parse card */
+.pcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin:22px 0}
+.pcard-h{background:#F6F8F6;border-bottom:1px solid var(--line);padding:13px 20px;font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{font:600 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:11px 20px;border-bottom:1px solid var(--line)}
+td{padding:11px 20px;border-top:1px solid var(--line)}
+.pill{display:inline-block;font:700 11.5px var(--sans);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-line)}
+.p-fail{background:var(--fail-bg);color:var(--fail);border:1px solid var(--fail-line)}
+.p-part{background:var(--part-bg);color:var(--part);border:1px solid var(--part-line)}
+.pcard-cap{padding:12px 20px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+
+/* who for */
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.who .col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.who h3{font:700 15px var(--sans);margin-bottom:12px}
+.who .yes h3{color:var(--ok)} .who .no h3{color:var(--fail)}
+.who li{list-style:none;padding-left:22px;position:relative;margin-bottom:9px;font-size:14.5px}
+.who .yes li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.who .no li::before{content:"✕";position:absolute;left:0;color:var(--fail);font-weight:700}
+
+/* pricing */
+.price td:first-child{font-weight:600;color:var(--ink)}
+.pricewrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);margin:18px 0}
+.warn{font-size:13.5px;color:var(--part);background:var(--part-bg);border:1px solid var(--part-line);border-radius:10px;padding:12px 16px;margin-top:12px}
+
+/* alternatives */
+.alt{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:18px 22px;margin-bottom:12px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.alt .n{font:700 15.5px var(--sans);color:var(--ink)}
+.alt .d{font-size:13.5px;color:var(--muted);max-width:480px}
+.tag-nc{display:inline-block;font:700 10.5px var(--mono);letter-spacing:.08em;color:var(--chip);background:var(--chip-bg);border:1px solid #CFE0EE;border-radius:6px;padding:2px 8px;text-transform:uppercase}
+.alt a{font:600 13.5px var(--sans);color:var(--ok);text-decoration:none;white-space:nowrap}
+
+/* faq */
+details{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px;padding:0 20px}
+summary{font:600 15px var(--sans);color:var(--ink);padding:15px 0;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--muted);font-size:18px}
+details[open] summary::after{content:"–"}
+details p{font-size:14.5px;padding-bottom:16px;margin:0}
+
+/* CTA */
+.cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:36px 0 0}
+.cta a{display:block;text-decoration:none;border-radius:14px;padding:22px 24px;transition:transform .12s}
+.cta a:hover{transform:translateY(-2px)}
+.cta .primary{background:var(--ink);color:#fff}
+.cta .primary .t{font:700 17px var(--sans);margin-bottom:4px}
+.cta .primary .s{font-size:13px;color:#9FB2C8}
+.cta .secondary{background:var(--ok-bg);border:1.5px solid var(--ok-line);color:var(--ink)}
+.cta .secondary .t{font:700 17px var(--sans);color:var(--ok);margin-bottom:4px}
+.cta .secondary .s{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.cta a{transition:none}}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 24px;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="mock"><b>MOCKUP</b> · internal draft · test figures are sample data</div>
+
+<nav class="nav"><div class="nav-in">
+  <a class="logo" href="#">Career<span>Radar</span></a>
+  <a class="lnk" href="#">Research</a><a class="lnk" href="#">Reviews</a><a class="lnk" href="#">Compare</a>
+  <span class="right"></span><a class="btn-free" href="#">Free ATS Parse Preview</a>
+</div></nav>
+
+<div class="disclose">We may earn a commission from links on this page. Rankings are generated from our ATS test data and are <b>commission-blind</b> — <a href="#">see how we test →</a></div>
+
+<main>
+
+<div class="eyebrow">Reviews · Resume Builders</div>
+<h1>Rezi review: strong ATS parse results, generic output for niche roles</h1>
+<div class="byline">By <b>CareerRadar Lab</b> · Last verified <b>Jun 2026</b> · Test batch <a class="chip" href="#">GH-2026Q2-rezi</a></div>
+
+<div class="vbadge">
+  <div class="mark">✓</div>
+  <div>
+    <div class="t">Verified against real ATS systems</div>
+    <div class="s">Resumes generated with Rezi were uploaded to live Greenhouse and Lever pipelines in June 2026 · 3 templates × 3 runs each · <a class="chip" href="#">view raw records</a></div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="label">Quick answer</div>
+  <div class="score"><span class="num">4.2</span><span class="of">/ 5 · score generated from parse data, not editor opinion</span></div>
+  <p><strong>Rezi is worth it if your #1 worry is machine readability.</strong> Its default templates parsed 9 of 10 tracked fields in Greenhouse and 8 of 10 in Lever — among the best results in our current batch. The trade-off: its AI-written bullet points read generic for specialized roles, so budget time to rewrite content yourself. If you mainly need free one-off checks rather than a builder, a paid subscription is overkill — see alternatives below.</p>
+  <div class="note">Score formula: 70% field-level parse performance · 20% export freedom · 10% pricing transparency. Commissions are not an input.</div>
+</div>
+
+<h2>What we measured</h2>
+<p>We generated the same fictional candidate's resume using Rezi's three most popular templates, exported to PDF, and uploaded each to live Greenhouse and Lever application forms — the same protocol as our <a href="#" style="color:var(--ok);font-weight:600">ATS Parse Study</a>. No submissions were made; we recorded the autofill parse of 10 fields per run.</p>
+
+<div class="pcard">
+  <div class="pcard-h">Parse results · Rezi default templates <span class="chip">GH-2026Q2-rezi</span></div>
+  <table>
+    <thead><tr><th>Field group</th><th>Greenhouse</th><th>Lever</th></tr></thead>
+    <tbody>
+      <tr><td>Contact details</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-ok">Pass 9/9</span></td></tr>
+      <tr><td>Work history + dates</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-ok">Pass 8/9</span></td></tr>
+      <tr><td>Skills</td><td><span class="pill p-ok">Pass 9/9</span></td><td><span class="pill p-part">Partial 7/9</span></td></tr>
+      <tr><td>Education</td><td><span class="pill p-part">Partial 8/9</span></td><td><span class="pill p-ok">Pass 9/9</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pcard-cap">One Rezi template (the two-column "Compact") drove all the partial results above — consistent with our study's two-column finding. Stick to its single-column templates and parse performance was flawless.</div>
+</div>
+
+<h2>Who should use Rezi</h2>
+<div class="who">
+  <div class="col yes"><h3>Get it if you…</h3><ul>
+    <li>Apply mostly to mid/large companies that run structured ATS pipelines</li>
+    <li>Want keyword targeting against a specific job description built into the editor</li>
+    <li>Prefer a one-time payment — the lifetime deal beats 3+ months of subscription</li>
+  </ul></div>
+  <div class="col no"><h3>Skip it if you…</h3><ul>
+    <li>Work in a niche field — its AI bullets read generic and you'll rewrite most of them</li>
+    <li>Only need to check an existing resume, not build one (use a free parse check instead)</li>
+    <li>Apply mainly to small companies that read PDFs by hand — parse optimization buys you little there</li>
+  </ul></div>
+</div>
+
+<h2>Pricing, including the fine print</h2>
+<div class="pricewrap"><table class="price">
+  <thead><tr><th>Plan</th><th>Price</th><th>What actually matters</th></tr></thead>
+  <tbody>
+    <tr><td>Free</td><td>$0</td><td>1 resume, Rezi branding on export, limited AI credits</td></tr>
+    <tr><td>Pro</td><td>$29/mo</td><td>Unlimited AI writing + keyword targeting; renews automatically</td></tr>
+    <tr><td>Lifetime</td><td>$149 once</td><td>Best value if your search runs past ~3 months</td></tr>
+  </tbody>
+</table></div>
+<div class="warn">⚠ Auto-renewal note: Pro renews monthly by default and cancellation is inside account settings, not email — set a reminder if your job search is short.</div>
+
+<h2>Alternatives we've tested</h2>
+<div class="alt">
+  <div><div class="n">Kickresume</div><div class="d">Better-looking templates, slightly weaker Lever parse results in our batch. Similar pricing.</div></div>
+  <a href="#">Read review →</a>
+</div>
+<div class="alt">
+  <div><div class="n">Teal <span class="tag-nc">No commission</span></div><div class="d">We earn nothing recommending Teal. Its free tier covers tracking + a solid builder — the budget pick in this category.</div></div>
+  <a href="#">Read review →</a>
+</div>
+<div class="alt">
+  <div><div class="n">Write it yourself + free parse check</div><div class="d">If your content is strong, a plain single-column doc parsed perfectly in 18/18 of our baseline runs. Total cost: $0.</div></div>
+  <a href="#">See the study →</a>
+</div>
+
+<h2>FAQ</h2>
+<details><summary>Does Rezi guarantee my resume passes ATS screening?</summary><p>No tool can. Parsing affects whether your data is extracted and searchable — it's one variable. Content quality, role fit and competition matter more. Rezi's parse performance was strong in our tests; that's the claim we can verify, and the only one we'll make.</p></details>
+<details><summary>Is the Rezi score based on your opinion?</summary><p>The 4.2 is computed from field-level parse records (70%), export freedom (20%) and pricing transparency (10%). Editors write the words; the number comes from the data. Commissions are not an input — Teal, which pays us nothing, outranks two paying tools in this category.</p></details>
+<details><summary>When was this review last tested?</summary><p>June 2026, batch GH-2026Q2-rezi. We re-test quarterly; if Rezi ships a template update that changes results, the score changes with it and the changelog will say so.</p></details>
+
+<div class="cta">
+  <a class="primary" href="#"><div class="t">Try Rezi →</div><div class="s">Affiliate link · we may earn a commission · price unchanged for you</div></a>
+  <a class="secondary" href="#"><div class="t">Not sure you need a builder?</div><div class="s">Run our free ATS Parse Preview on your current resume first — 2 minutes, no signup</div></a>
+</div>
+
+</main>
+
+<footer>CareerRadar · An independent verification lab for job-search tools · <a href="#">Methodology</a> · <a href="#">How we make money</a> · Rankings are commission-blind · © 2026</footer>
+
+</body>
+</html>

@@ -32,3 +32,9 @@
 | 2026-07-15 | projects/careerradar/strategy/_import-record.md | project | 四种飞轮原始材料、整理稿、校验值与回退范围记录 |
 | 2026-07-15 | projects/careerradar/_overview.md | project | 新增"系统层假设"节:工具工厂元层假设、可迁移边界与预承诺规则(源:对话) |
 | 2026-07-15 | prompts/_index.md | prompt | 新增"Ponytail(Problem)问题极简判定清单":跨域前置检查七步,附工程原版(源:对话) |
+| 2026-07-17 | projects/careerradar/execution/_index.md | project | CareerRadar 执行待办看板(初始化,与根目录 tasks/ 的 if-then 规则区分) |
+| 2026-07-17 | projects/careerradar/execution/ATS实测执行方案_Day1-14.md | project | ATS 实测 Day1-14 技术门 SOP:测试入口、变体制作、记录 schema、Kill Criteria |
+| 2026-07-17 | projects/careerradar/execution/materials/母本简历_内容冻结_FROZEN.md | project | ATS 实测母本简历(Alex Chen),2026-07-17 内容冻结,变体唯一文本来源 |
+| 2026-07-17 | projects/careerradar/execution/materials/_index.md | project | 待办物料库索引:母本 FROZEN 文档、V01 母版 docx/pdf、测试记录表 |
+| 2026-07-17 | projects/careerradar/决策原则_红线与MVP反脆弱七门.md | project | 决策一页纸(红线+MVP反脆弱七门+四问);由「冷启动」更名为「MVP反脆弱」;第3门为软门 |
+| 2026-07-17 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 七门收敛为六门+执行铁律;第2门增「暂无数据可跳过」但不解除动手禁令;旧七门文件 superseded |
