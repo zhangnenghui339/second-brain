@@ -101,6 +101,7 @@ supersedes:
 
 3. **这个东西是 Engine 还是 Payload？**
    通用能力（爬虫、pSEO、prompt、测试框架）写进 Engine 仓库，CareerRadar 死了它们还能用。CareerRadar 专属的东西认了，就是消耗品。
+   上位的 founder-fit 判别见 [`../../thinking/两种杠杆判别法_离机器近离文化远.md`](../../thinking/两种杠杆判别法_离机器近离文化远.md)：经验型杠杆依赖履历与文化，系统型杠杆依赖可验证结果；该判别法本身属于跨项目 Engine。
 
 4. **在本周期预算内吗？**
    6 个月固定预算不突破，信号再好也不加注。

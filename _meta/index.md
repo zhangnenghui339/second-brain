@@ -40,3 +40,4 @@
 | 2026-07-17 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 七门收敛为六门+执行铁律;第2门增「暂无数据可跳过」但不解除动手禁令;旧七门文件 superseded |
 | 2026-07-17 | projects/careerradar/Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md | project | Day1 证伪 GH 候选人端回填 + 竞品实测供给为零核查;已升格为正式决策 |
 | 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |
+| 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
