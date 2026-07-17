@@ -38,6 +38,7 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
   3. 工厂价值在"用它 2 周内冷启动一个任意垂直的测试站"验证通过前,**按零计**
 
 ## 关键决策索引(下钻用)
+- 决策原则（一页纸） → projects/careerradar/decision-principles.md
 - 定位:裁判层而非工具层 → decisions/(迁移后补路径)
 - 资产三分法 A/B/C → thinking/principles.md;“唯一 Class A 是什么”正在四种飞轮模型中重新比较
 - compare/ 与 Reviews 分 silo,承接头对头商业词 → decisions/(迁移后补路径)
