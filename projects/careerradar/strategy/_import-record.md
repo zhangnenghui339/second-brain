@@ -45,7 +45,7 @@ batch_id: 2026-07-15_careerradar-four-flywheels
 如需完整撤销本批次，仅撤销以下范围：
 
 1. 删除 `projects/careerradar/strategy/` 整个目录。
-2. 从 `projects/careerradar/_overview.md` 删除“核心运行飞轮尚未定稿”、战略模型索引及 Class A 复核文字。
+2. 从 `projects/careerradar/_overview.md` 删除“核心运行飞轮尚未定稿”、战略模型索引及“不可回填复利资产”复核文字。
 3. 从 `_meta/index.md` 删除本批次新增的五条 CareerRadar Strategy 索引记录。
 
 `local/doc/seo工具战略规划/` 中的四份原件不属于回退范围，因为本批次没有修改它们。
