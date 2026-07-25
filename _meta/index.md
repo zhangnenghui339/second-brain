@@ -41,3 +41,4 @@
 | 2026-07-17 | projects/careerradar/Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md | project | Day1 证伪 GH 候选人端回填 + 竞品实测供给为零核查;已升格为正式决策 |
 | 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |
 | 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
+| 2026-07-25 | thinking/principles.md | thinking | 资产三分法去除字母代号,统一为不可回填复利资产、可复用折旧资产、一次性燃料资产 |

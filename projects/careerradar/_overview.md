@@ -33,14 +33,14 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 
 - **系统构成**:Search Demand Radar(Google 热词雷达)+ email machine + pSEO 引擎 + 提示词库 + 自动化 Agent 管线 + GEO 方法论 +决策 harness
 - **对冲逻辑(非遍历性)**:CareerRadar 失败 ≠ 归零;系统层资产可迁移到其他垂直重跑,第二次爬坡成本递减
-- **关键边界(可迁移 ≠ 有价值)**:GEO 权威归域名、Email List / Outcome Data / parse_results / 资源库归实例层,均**不可迁移**;可迁移的管线与提示词多为折旧型 Class B,唯词雷达的时序数据积累趋近 Class A
+- **关键边界(可迁移 ≠ 有价值)**:GEO 权威归域名、Email List / Outcome Data / parse_results / 资源库归实例层,均**不可迁移**;可迁移的管线与提示词多为可复用折旧资产,唯词雷达的时序数据积累趋近不可回填复利资产
 - 
 
 ## 关键决策索引(下钻用)
 - 决策一页纸(红线 / MVP 反脆弱六门 / 四问 / 警觉信号) → [`决策原则_红线与MVP反脆弱六门.md`](决策原则_红线与MVP反脆弱六门.md)
 - ATS 实测主通道切换 + "后台真相"双证据链叙事 → `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`(证据源:`Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md`)
 - 定位:裁判层而非工具层 → decisions/(迁移后补路径)
-- 资产三分法 A/B/C → thinking/principles.md;“唯一 Class A 是什么”正在四种飞轮模型中重新比较
+- 资产三分法（不可回填复利资产 / 可复用折旧资产 / 一次性燃料资产）→ thinking/principles.md;“唯一不可回填复利资产是什么”正在四种飞轮模型中重新比较
 - compare/ 与 Reviews 分 silo,承接头对头商业词 → decisions/(迁移后补路径)
 
 ## 竞品地图
