@@ -2,7 +2,7 @@
 title: 个人原则库
 type: thinking
 maturity: principle
-updated: 2026-07-15
+updated: 2026-07-26
 ---
 
 # 个人原则库(已升格的结论,L1 级记忆)
@@ -13,9 +13,11 @@ updated: 2026-07-15
 - 个体决策用 Kelly / 非遍历性框架,不用期望值最大化;组合式低成本并行测试优于单点押注。(来源:VC 幂律解构)
 - 保留股权 + 时间自主 + 低公开暴露 > 最大化账面净值。(来源:IPO vs bootstrap 分析)
 - 跨市场 founder-fit 应按信任来源判断：经验型杠杆依赖履历与文化直觉，系统型杠杆依赖可验证结果；跨文化选位优先“离机器近、离文化远”。(来源:[两种杠杆判别法](两种杠杆判别法_离机器近离文化远.md))
+- MVP / 选品硬筛看现行决策一页纸：三红线 + 反脆弱九门。(来源:[决策原则_红线与MVP反脆弱九门](../projects/careerradar/决策原则_红线与MVP反脆弱九门.md))
 
 ## 资产
-- 资产三分:Class A 不可回填 / B 折旧 / C 燃料;outcome data 是 CareerRadar 唯一 Class A,必须 day-one 收集。
+- 资产三分:Class A 不可回填 / B 折旧 / C 燃料。
+- CareerRadar：结果数据（Outcome）为 Class A，必须 day-one 收集；可触达权（Email 等）为不可砍的底层管道，与 Outcome 并列守住（红线3）。(来源:决策原则九门)
 
 ## 执行
 - 执行力情绪依赖 → 一切靠预承诺规则与系统,不靠意志力。
