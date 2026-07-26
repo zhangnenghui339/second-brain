@@ -42,3 +42,4 @@
 | 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |
 | 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
 | 2026-07-26 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 三红线升级为跨项目通用版（禁AI薄壳/禁平台执行与重运营/不砍Outcome与Email），Career 映射移入附录 |
+| 2026-07-26 | projects/careerradar/决策原则_红线与MVP反脆弱九门.md | project | 六门升级为九门：问题来源/时机/付费与获客/可做稳/复利五层；旧六门文件 superseded |

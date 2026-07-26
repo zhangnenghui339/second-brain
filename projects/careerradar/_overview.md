@@ -2,7 +2,7 @@
 title: CareerRadar 项目速览
 type: overview
 project: careerradar
-updated: 2026-07-17
+updated: 2026-07-26
 maintained_by: ai
 ---
 
@@ -26,7 +26,7 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 - **核心运行飞轮尚未定稿**:当前并列整理 4 种主体实现模型,见 `strategy/_index.md`;回答总体战略问题时不得默认其中一个已经胜出
 - **默认执行基线**:`strategy/01-流量与邮件名单飞轮.md`;它代表当前 SEO / Affiliate / Email 获客底座,不等于最终主飞轮决策
 - **系统层假设进入 exploring**:见下方"系统层假设"节;回答总体战略问题时须与四飞轮一并纳入,但不得当作已定结论
-- **决策原则一页纸已并入 MVP 反脆弱六门(2026-07-17)**:见 [`决策原则_红线与MVP反脆弱六门.md`](决策原则_红线与MVP反脆弱六门.md);做不做 MVP 先过六门,定位类决策过红线与四问;第2门暂无支付漏斗数据可先跳过(pending)
+- **决策原则一页纸已升级为 MVP 反脆弱九门(2026-07-26)**:见 [`决策原则_红线与MVP反脆弱九门.md`](决策原则_红线与MVP反脆弱九门.md);做不做 MVP 先过九门,定位类决策过红线与四问;门5 暂无支付漏斗数据可先跳过推演但补测前禁建主闭环;旧六门已 superseded
 
 ## 系统层假设(横跨四飞轮的元层,status: exploring)
 
@@ -37,7 +37,7 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 - 
 
 ## 关键决策索引(下钻用)
-- 决策一页纸(红线 / MVP 反脆弱六门 / 四问 / 警觉信号) → [`决策原则_红线与MVP反脆弱六门.md`](决策原则_红线与MVP反脆弱六门.md)
+- 决策一页纸(红线 / MVP 反脆弱九门 / 四问 / 警觉信号) → [`决策原则_红线与MVP反脆弱九门.md`](决策原则_红线与MVP反脆弱九门.md)
 - ATS 实测主通道切换 + "后台真相"双证据链叙事 → `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`(证据源:`Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md`)
 - 定位:裁判层而非工具层 → decisions/(迁移后补路径)
 - 资产三分法 A/B/C → thinking/principles.md;“唯一 Class A 是什么”正在四种飞轮模型中重新比较

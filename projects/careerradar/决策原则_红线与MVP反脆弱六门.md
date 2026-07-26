@@ -6,7 +6,8 @@ tags: [decision-principles, validation-gates]
 source: conversation
 created: 2026-07-15
 updated: 2026-07-26
-status: active
+status: superseded
+superseded_by: projects/careerradar/决策原则_红线与MVP反脆弱九门.md
 supersedes:
   - projects/careerradar/decision-principles.md
   - projects/careerradar/决策原则.md
@@ -16,10 +17,8 @@ supersedes:
 
 # 决策原则：红线与 MVP 反脆弱六门
 
-> 用法：做任何重要决策前，读一遍这页。就这样，没有别的流程。  
-> 分层：定位/红线看上半页；「做不做 MVP」先过反脆弱六门。  
-> 红线为跨项目通用否决条款；文末附录为 CareerRadar 映射示例。  
-> 更新：想改就直接改，Git 历史就是版本记录。
+> **已 superseded。** 现行决策一页纸见 [`决策原则_红线与MVP反脆弱九门.md`](决策原则_红线与MVP反脆弱九门.md)。  
+> 下文保留作历史版本，勿再作为执行依据。
 
 ---
 
