@@ -42,3 +42,4 @@
 | 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |
 | 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
 | 2026-07-25 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 门1新增"交付形态迁移"子项,补充"老需求换新交付界面"这类缝隙判断(源:对话) |
+| 2026-07-26 | thinking/Pieter-Levels_创业验证与低成本试错.html | thinking | Pieter Levels 的低成本试错、快速付费验证、渠道资产与决策规则复利框架 |
