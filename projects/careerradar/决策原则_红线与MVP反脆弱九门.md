@@ -7,7 +7,6 @@ source: conversation
 created: 2026-07-15
 updated: 2026-07-26
 status: active
-# note: 门5 文案于同日收束为「极速量产 / 5% 成功率法则」版
 supersedes:
   - projects/careerradar/decision-principles.md
   - projects/careerradar/决策原则.md
