@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Levels 选品框架 × 六门/三红线 对照</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F1F0EC;
+    --bg-card: #FFFFFF;
+    --ink: #1B1D1C;
+    --ink-soft: #6B6862;
+    --line: #DAD7CF;
+    --navy: #263449;
+    --consist: #4B6B4E;   /* 递进/一致 */
+    --consist-bg: #E7EEE6;
+    --tension: #A9772F;   /* 张力/需打补丁 */
+    --tension-bg: #F3E9D6;
+    --dim: #6B3F52;       /* 另一维度 */
+    --dim-bg: #EFE3E8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px 120px;}
+
+  header.hero{
+    padding:96px 0 56px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:56px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:44px;
+    line-height:1.15;
+    margin:0 0 20px;
+    letter-spacing:-.01em;
+  }
+  h1 em{font-style:italic; color:var(--navy);}
+  .hero-sub{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:620px;
+  }
+
+  section{margin-bottom:72px;}
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:26px;
+    margin:0 0 8px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+  }
+  h2 .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .section-sub{color:var(--ink-soft); font-size:14.5px; margin-bottom:28px; max-width:640px;}
+
+  .principle{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .principle:last-child{border-bottom:1px solid var(--line);}
+  .principle .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--navy);
+    padding-top:3px;
+  }
+  .principle h3{margin:0 0 6px; font-size:16.5px; font-weight:600;}
+  .principle p{margin:0; font-size:14.5px; color:#3c3a36;}
+  .principle .eg{
+    display:inline-block;
+    margin-top:8px;
+    font-size:12.5px;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-soft);
+    background:#EAE8E2;
+    padding:2px 8px;
+    border-radius:3px;
+  }
+
+  .filter-list{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:6px 24px;
+  }
+  .filter-list li{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .filter-list li:last-child{border-bottom:none;}
+  .filter-list b{color:var(--navy);}
+
+  .causal{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .causal .row{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    border-top:1px solid var(--line);
+  }
+  .causal .row:first-child{border-top:none;}
+  .causal .k{
+    padding:16px 18px;
+    font-weight:600;
+    font-size:14px;
+    background:#F7F6F3;
+    border-right:1px solid var(--line);
+  }
+  .causal .v{padding:16px 18px; font-size:14px;}
+
+  .steps{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    background:var(--navy);
+    color:#E9EDF2;
+    border-radius:6px;
+    padding:22px 26px;
+    line-height:2;
+  }
+  .steps .bad{color:#E3B3A6;}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    font-size:13.8px;
+  }
+  th, td{
+    text-align:left;
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    background:#F7F6F3;
+  }
+  tr:last-child td{border-bottom:none;}
+
+  .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:3px 9px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tag.consist{background:var(--consist-bg); color:var(--consist);}
+  .tag.tension{background:var(--tension-bg); color:var(--tension);}
+  .tag.dim{background:var(--dim-bg); color:var(--dim);}
+
+  .gate-card{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--line);
+    border-radius:4px;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .gate-card.consist{border-left-color:var(--consist);}
+  .gate-card.tension{border-left-color:var(--tension);}
+  .gate-card.dim{border-left-color:var(--dim);}
+  .gate-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    background:#F7F6F3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-right:1px solid var(--line);
+  }
+  .gate-body{padding:16px 18px;}
+  .gate-body .title-row{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px;}
+  .gate-body h4{margin:0; font-size:15px; font-weight:600;}
+  .gate-body p{margin:0; font-size:13.8px; color:#3c3a36;}
+  .gate-body p + p{margin-top:6px;}
+  .gate-body .label{color:var(--ink-soft); font-size:12px; font-family:'IBM Plex Mono', monospace; margin-bottom:2px;}
+
+  .verdict{
+    background:var(--navy);
+    color:#EDEFF2;
+    border-radius:6px;
+    padding:30px 30px;
+    font-size:15px;
+  }
+  .verdict h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:19px;
+    margin:0 0 14px;
+    color:#fff;
+  }
+  .verdict .three{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+    margin-top:20px;
+  }
+  .verdict .cell{
+    background:rgba(255,255,255,.06);
+    border-radius:5px;
+    padding:14px 16px;
+    font-size:13px;
+  }
+  .verdict .cell .n{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .verdict .cell.c1 .n{color:#8FC08F;}
+  .verdict .cell.c2 .n{color:#E0B96B;}
+  .verdict .cell.c3 .n{color:#D9A0BB;}
+
+  footer{
+    margin-top:80px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  @media (max-width:640px){
+    h1{font-size:32px;}
+    .principle{grid-template-columns:1fr;}
+    .causal .row{grid-template-columns:1fr;}
+    .causal .k{border-right:none; border-bottom:1px solid var(--line);}
+    .verdict .three{grid-template-columns:1fr;}
+    table, thead, tbody, th, td, tr{display:block;}
+    thead{display:none;}
+    td{border-bottom:none; padding:6px 14px;}
+    tr{border-bottom:1px solid var(--line); padding:10px 0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">复盘笔记 · Pieter Levels 选品与失败框架</div>
+    <h1>不是选中了好产品，<br>是把<em>试错成本</em>压到了足够低。</h1>
+    <p class="hero-sub">梳理 Pieter Levels 的项目选择逻辑、失败教训与可复制边界，并与 CareerRadar 自有的「MVP 反脆弱六门 + 三红线」决策框架做逐条对照——判断两者是同一件事的递进改写，还是各自独立的维度。</p>
+  </header>
+
+  <!-- 01 方法论 -->
+  <section>
+    <h2><span class="num">01</span> 核心方法论</h2>
+    <p class="section-sub">五个动作，构成他挑项目、验证项目、放弃项目的完整闭环。</p>
+
+    <div class="principle">
+      <div class="idx">A</div>
+      <div>
+        <h3>问题从自己来（Scratch Your Own Itch）</h3>
+        <p>观察自己生活里缺失的信息或烦恼的事，因为自己就是用户，不需要花几个月理解需求。</p>
+        <span class="eg">不知道去哪座城市远程生活 → Nomad List　·　远程工作者需要工作 → Remote OK</span>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="idx">B</div>
+      <div>
+        <h3>紧贴突然出现的新技术能力</h3>
+        <p>不完全来自需求访谈，也来自「技术供给创造产品机会」——先玩新模型，发现某个结果第一次变得可用，几天内挂上支付页面。</p>
+        <span class="eg">Stable Diffusion / DreamBooth / image-to-image → Photo AI、Interior AI</span>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="idx">C</div>
+      <div>
+        <h3>先人工交付，再决定是否自动化</h3>
+        <p>Avatar AI 早期：Stripe收款 → Typeform收照片 → 手动训练 → 手动生成 → 手动发送。最初几百单全靠人工，需求爆发后才被迫自动化——本质是「先卖，再写完整软件」，避免在没有需求时投入工程成本。</p>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="idx">D</div>
+      <div>
+        <h3>让市场筛选，而不是自己预测</h3>
+        <p>发现问题/新能力 → 几天内做原型 → 公开发布 → 尽快收费 → 看真实购买 → 有增长就继续，没增长就停。他真正擅长的不是「选中好产品」，是把每次试错成本压得足够低、足够快地识别哪个值得继续——这和「成功率高」完全不同，他的项目清单反而证明失败率非常高。</p>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="idx">E</div>
+      <div>
+        <h3>他筛选项目的隐性过滤器</h3>
+      </div>
+    </div>
+    <ul class="filter-list" style="list-style:none; margin:-8px 0 0; padding-left:24px;">
+      <li><b>时机窗口</b> — 趋势必须「刚被验证但未饱和」，不创造需求，只做趋势的第一批产品化，是时间套利不是需求创造</li>
+      <li><b>复杂度上限</b> — 一个人两周能独立搞定，需要团队/融资的想法直接过滤，不管市场多大</li>
+      <li><b>上线即收费</b> — 不做纯增长期，免费产品的「用户喜欢」是噪音，付费转化率才是真信号，用付费墙代替市场调研</li>
+      <li><b>必须能挂到现有分发渠道</b> — 12个月12个项目超过95%失败，但失败成本极低，因为每次测试几乎零CAC，代价只是几周开发时间</li>
+    </ul>
+  </section>
+
+  <!-- 02 失败教训 -->
+  <section>
+    <h2><span class="num">02</span> 失败教训：从项目到规则</h2>
+    <p class="section-sub">单次失败大多不值得归因，但少数信号足够强的失败，被沉淀成了可复用多次的规则。</p>
+
+    <div class="causal">
+      <div class="row">
+        <div class="k">Uber Clone (2010)</div>
+        <div class="v">找富人投资人融资，对方从未真正投资，纯浪费时间且相当羞辱 → <b>融资路径被永久剔除</b>，此后走「自筹 + 高频低成本试错」，而非「融资 + 押注单一项目」</div>
+      </div>
+      <div class="row">
+        <div class="k">Tubelytics (2013–14)</div>
+        <div class="v">花近一年打磨YouTube数据分析后台，界面精致，但没人付钱 → 「<b>先验证付费意愿再动手</b>」规则 → 直接决定了 RemoteOK（day-1收费）、Photo AI（生成即收费）、飞行模拟器（几天内挂Stripe链接）的统一打法。一个失败项目产出的规则，被复用了至少三次成功案例，这才是真正的复利——不是项目的复利，是<b>决策规则的复利</b></div>
+      </div>
+      <div class="row">
+        <div class="k">Panda Mix Show (2008–14)</div>
+        <div class="v">早期YouTube收入来源，因版权申诉规则变化，收入从$8K/月跌到$500-900/月 → 触发了「12 Startups in 12 Months」，更深层教训是：<b>后续所有成功项目都自己掌控域名/用户数据/邮件列表</b>，不再依赖单一平台的规则变化</div>
+      </div>
+      <div class="row">
+        <div class="k">其余约10个失败</div>
+        <div class="v">没有具体归因，只有一句「没能起来」——这个空白本身就是信号：<b>高频组合下注策略下，单次失败不值得深度复盘</b>，复盘成本也是成本，只有损失大到威胁继续试错能力的失败才值得沉淀成规则</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 常见错误 -->
+  <section>
+    <h2><span class="num">03</span> 最容易踩的坑：闭门造车</h2>
+    <div class="steps">
+      先决定"我要创业"<br>
+      → 在趋势报告里找一个赛道<br>
+      → 想象用户可能存在的问题<br>
+      → <span class="bad">闭门开发半年</span><br>
+      → 上线后再找用户　<span class="bad">← 反馈延迟到终点，错误在此期间持续累积</span>
+    </div>
+    <p style="margin-top:18px; font-size:14.5px; color:#3c3a36;">解法只有一句话：<b>在写第一行代码之前先确认有人愿意付钱</b>（挂付款链接/收集意向金），把「验证」从「上线后」移到「动手前」，彻底切断这个失败模式的根。</p>
+  </section>
+
+  <!-- 04 决策算法 -->
+  <section>
+    <h2><span class="num">04</span> 他真正的决策算法</h2>
+    <table>
+      <tr><td>问题从自己来</td><td>自己不用 / 自己不痛 → 不做</td></tr>
+      <tr><td>原创性靠人变不一样</td><td>旅行、边缘场景、非同质生活 → 看到别人看不到的问题；不靠头脑风暴抄同温层</td></tr>
+      <tr><td>先小后大</td><td>niche验证后再扩市场（Nomad → travel）</td></tr>
+      <tr><td>一年一个项目的反面</td><td>早期12 startups / 12 months；失败成本压到月级</td></tr>
+      <tr><td>有机流量是裁判</td><td>停买广告还在涨才算真；假增长不当验证</td></tr>
+      <tr><td>后期追加一条</td><td>会维护、付费路径清晰的才做（熵会让产品坏掉）</td></tr>
+      <tr><td>粘住之后</td><td>进入「自动化 + 退出日常劳作」循环，然后开下一枪</td></tr>
+    </table>
+  </section>
+
+  <!-- 05 可复制 -->
+  <section>
+    <h2><span class="num">05</span> 可复制 vs 难抄／易误读</h2>
+    <table>
+      <thead><tr><th style="width:50%">仍可抄</th><th>难抄 / 易误读</th></tr></thead>
+      <tr><td>自有问题、小MVP、立刻收费、杀弱加倍</td><td>他后期有60万级受众，新项目冷启动成本被品牌压低</td></tr>
+      <tr><td>从已粘住产品做邻接扩张（RemoteOK模式）</td><td>「散弹枪」被理解成乱做；他其实每枪都有硬筛：自己有没有痛、能不能很快上线、能不能马上收钱、一个人能不能跑、有没有有机流量</td></tr>
+      <tr><td>跟新技术浪做5天–4周探针（Interior/Avatar模式）</td><td>叙事里少写失败枪数，Base Rate被幸存者偏差抬高</td></tr>
+    </table>
+    <p style="margin-top:16px; font-size:14.5px; color:#3c3a36;">这两栏在拆同一件事：他表面像「乱开枪」，实际有硬筛；外人抄结论时，容易把「可抄的动作」和「难抄的条件」搞混。</p>
+  </section>
+
+  <!-- 06 获客渠道 -->
+  <section>
+    <h2><span class="num">06</span> 获客渠道的三个子维度</h2>
+    <p class="section-sub">「抄产品」同时在处理三个可复制性天差地别的东西，容易被混为一谈。</p>
+    <table>
+      <thead><tr><th style="width:26%">被复制的对象</th><th style="width:20%">可复制性</th><th>说明</th></tr></thead>
+      <tr><td>产品功能 / UI形态</td><td>几乎100%可复制</td><td>最容易，也最没价值的部分</td></tr>
+      <tr><td>痛点 / 付费意愿</td><td>部分可复制</td><td>广谱刚需大概率对陌生用户依然成立；依赖特定场景/信任关系的，换渠道未必成立</td></tr>
+      <tr><td>获客渠道 + 获客成本</td><td>最难复制</td><td>通常是唯一的真护城河，可再拆三层：<b>渠道可得性</b>（能不能进）、<b>渠道成本</b>（陌生玩家要为不被信任支付隐性溢价）、<b>渠道所有权</b>（租的还是自己的——Levels真正的护城河是十年攒下的自有流量池，边际获客成本趋近于零）</td></tr>
+    </table>
+  </section>
+
+  <!-- 07 对照 -->
+  <section>
+    <h2><span class="num">07</span> 对照：六门 / 三红线，是递进还是另一维度</h2>
+    <p class="section-sub">CareerRadar 的「MVP反脆弱六门 + 三红线」是把 Levels 的实战经验抽成可执行清单——但不是无损翻译。逐条核对，三种关系并存。</p>
+
+    <div class="gate-card consist">
+      <div class="gate-id">G2</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>先愿付费</h4><span class="tag consist">递进 · 一致</span></div>
+        <p class="label">Levels对应</p>
+        <p>「上线即收费，不做纯增长期」铁律，Tubelytics教训直接产出</p>
+        <p>几乎是同一条规则的两种写法，是六门里唯一被Levels反复、明确验证过的一条，可以直接合并。</p>
+      </div>
+    </div>
+
+    <div class="gate-card consist">
+      <div class="gate-id">G3</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>零平台依赖</h4><span class="tag consist">递进 · 一致</span></div>
+        <p class="label">Levels对应</p>
+        <p>Panda Mix Show教训 → 自己掌控域名 / 用户数据 / 邮件列表</p>
+        <p>因果链清晰：Levels吃过平台规则变化的亏才形成这条规则，六门把它抽象成通用清单，是直接递进。</p>
+      </div>
+    </div>
+
+    <div class="gate-card consist">
+      <div class="gate-id">G6</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>自有受众与低获客成本</h4><span class="tag consist">递进 · 核心</span></div>
+        <p class="label">Levels对应</p>
+        <p>十年Twitter自有流量池，全篇反复强调的核心资产（06节）</p>
+        <p>六门里唯一可以说是直接从Levels经验里「抽出来」的一条，甚至比其他几门更贴近他真实的成功机制核心。</p>
+      </div>
+    </div>
+
+    <div class="gate-card tension">
+      <div class="gate-id">G1</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>他人已验证</h4><span class="tag tension">张力 · 需打补丁</span></div>
+        <p class="label">Levels对应</p>
+        <p>隐性过滤器「趋势必须刚被验证但未饱和」+ 「原创性靠人变不一样」</p>
+        <p>门1要求「已被验证、赢家非通吃」的成熟赛道；Levels实际经常是早期开拓者（Nomad List / RemoteOK上线时都不存在先例），他的「验证」来自趋势时机判断，不是「已有人赚钱」。字面合并会误伤他真正做成的多数案例。</p>
+      </div>
+    </div>
+
+    <div class="gate-card tension">
+      <div class="gate-id">G4</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>资产秒交付</h4><span class="tag tension">张力 · 需打补丁</span></div>
+        <p class="label">Levels对应</p>
+        <p>先人工交付再自动化（Avatar AI手动处理早期订单）+ 极简可维护性</p>
+        <p>Levels的实践是「验证期允许人工，规模化后才自动化」；门4字面要求起量前就秒交付，若不区分「验证期」与「规模期」，会把他自己验证有效的打法误判为不合格。</p>
+      </div>
+    </div>
+
+    <div class="gate-card tension">
+      <div class="gate-id">G5</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>沉淀复利</h4><span class="tag tension">张力 · 需打补丁</span></div>
+        <p class="label">Levels对应</p>
+        <p>邻接扩张（RemoteOK吃Nomad List存量受众）+ D资产概念</p>
+        <p>门5要求「每一单交易本身沉淀资产」（pSEO/邮件列表等）；Levels的复利实际发生在受众/个人品牌这一层，是<b>项目之间</b>的复利，不是<b>单笔交易内</b>的复利——粒度不同，合并时要分清是「单量级复利」还是「组合级复利」。</p>
+      </div>
+    </div>
+
+    <div class="gate-card dim">
+      <div class="gate-id">R1</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>不做生成类产品</h4><span class="tag dim">另一维度</span></div>
+        <p class="label">Levels对应</p>
+        <p>无——Photo AI / Interior AI 本身就是生成类产品，且是核心收入</p>
+        <p>这条红线不是从Levels经验来的，方向甚至相反。它是CareerRadar对自身所在品类（内容/SEO）特有的 AI Overview 吞噬风险的防御，是行业特化产物，不能指望从Levels的经验里推导出来。</p>
+      </div>
+    </div>
+
+    <div class="gate-card dim">
+      <div class="gate-id">R2</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>不做 auto-apply / 平台执行层</h4><span class="tag dim">另一维度</span></div>
+        <p class="label">Levels对应</p>
+        <p>无直接对应，泛化地「避开重运营项目」勉强沾边</p>
+        <p>这是对 LinkedIn 这个具体巨头势力范围的避让，是 CareerRadar 所在细分市场的竞争格局判断，Levels框架里没有「避开巨头地盘」这类具体条款。</p>
+      </div>
+    </div>
+
+    <div class="gate-card dim">
+      <div class="gate-id">R3</div>
+      <div class="gate-body">
+        <div class="title-row"><h4>不砍 outcome 数据收集</h4><span class="tag dim">另一维度 · 原创延伸</span></div>
+        <p class="label">Levels对应</p>
+        <p>无——他的产品都不追踪「结果性」数据（照片有没有真的带来面试机会这类）</p>
+        <p>这条其实是把「沉淀复利」的思路往深处又走了一步：不只是流量/邮件列表可以复利，「结果验证数据」本身也是复利资产，且是求职这个垂类独有的不可回填资产。Levels的工具型SaaS形态不需要这类数据，这是CareerRadar在他的框架之外长出的东西。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 结论 -->
+  <section>
+    <div class="verdict">
+      <h3>一句话结论</h3>
+      <p>六门 + 三红线，不是对 Levels 框架的单一关系，而是三种关系的叠加：三条门是直接递进（把他的实战经验改写成了清单），三条门存在字面张力需要打补丁才能对齐，三条红线基本跳出了他的框架，是 CareerRadar 自己在具体品类风险认知上长出的另一维度——尤其是 outcome 数据红线，这是他完全没有触及、甚至他的产品形态本身就落在其禁区里的东西。</p>
+      <div class="three">
+        <div class="cell c1"><div class="n">递进 · 可直接合并</div>G2 先愿付费　G3 零平台依赖　G6 自有受众</div>
+        <div class="cell c2"><div class="n">张力 · 需打补丁</div>G1 已验证赛道　G4 秒交付　G5 沉淀复利</div>
+        <div class="cell c3"><div class="n">另一维度 · 品类特化</div>R1 生成类产品　R2 平台执行层　R3 outcome数据</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>SOURCE — inbox的内容创业的框架.txt ／ 决策原则_红线与MVP反脆弱六门.md</footer>
+
+</div>
+</body>
+</html>
