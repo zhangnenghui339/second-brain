@@ -31,8 +31,8 @@
 
 | 问题域                  | 加载角色(`prompts/`)                | 加载记忆                                                    | 典型触发                          |
 | ----------------------- | ------------------------------------ | ------------------------------------------------------------ | --------------------------------- |
-| 创业 / CareerRadar      | `business/` 下的角色文件             | `projects/careerradar/_overview.md` → `strategy/_index.md` → 默认加载 `strategy/01-流量与邮件名单飞轮.md`;命中特定飞轮时替换/补充 | "affiliate 下一步"、"这功能做不做" |
-| 重大决策 / 资源分配    | `decision/` 下的角色文件             | `decisions/_index.md` + `thinking/principles.md`             | "要不要押注 X"、"预算怎么分"      |
+| 创业 / CareerRadar      | `business/` 下的角色文件             | `projects/careerradar/_overview.md` → `strategy/_index.md` → 默认加载 `strategy/01-流量与邮件名单飞轮.md`;命中特定飞轮时替换/补充;**涉及「做不做 / MVP / 红线」时加读** `projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "affiliate 下一步"、"这功能做不做" |
+| 重大决策 / 资源分配    | `decision/` 下的角色文件             | `decisions/_index.md` + `thinking/principles.md` +（Career/MVP 相关时）`projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "要不要押注 X"、"预算怎么分"      |
 | 亲子教育               | `parenting/教育决策顾问.md`           | `family/daughter/_overview.md`                                | "家长会后怎么谈"、"学习规划"      |
 | 哲学 / 认知             | `persona/` 下的角色文件             | `thinking/_index.md` → 相关 thread                            | "恐惧与未来"、"人性第一性原理"    |
 | 心理 / 关系 / 内耗      | `persona/` + `psychology/`           | `family/partner/_overview.md` + 本文件第 1 节性格描述        | "这段互动怎么理解"、"内耗期怎么办" |

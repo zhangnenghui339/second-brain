@@ -42,7 +42,7 @@ knowledge-base/
 │   └── _template.md                 # ADR 模板(结论不可改,只追加复盘)
 ├── thinking/
 │   ├── _index.md                    # ★ 已预填 7 条 thread,映射你的 20+ 篇 temp
-│   └── principles.md                # 已预填 5 条已升格原则(Kelly/资产三分/预承诺等)
+│   └── principles.md                # 已升格原则(Kelly/资产三分/九门指针等)
 ├── prompts/
 │   ├── _index.md                    # 六类角色索引,对应腾讯文档现有分类
 │   ├── decision/ persona/ business/ expression/ psychology/ writing/

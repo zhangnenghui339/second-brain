@@ -41,3 +41,11 @@
 | 2026-07-17 | projects/careerradar/Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md | project | Day1 证伪 GH 候选人端回填 + 竞品实测供给为零核查;已升格为正式决策 |
 | 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |
 | 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
+| 2026-07-26 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 三红线升级为跨项目通用版（禁AI薄壳/禁平台执行与重运营/不砍Outcome与Email），Career 映射移入附录 |
+| 2026-07-26 | projects/careerradar/决策原则_红线与MVP反脆弱九门.md | project | 六门升级为九门：问题来源/时机/付费与获客/可做稳/复利五层；旧六门文件 superseded |
+| 2026-07-26 | _meta/router.md | meta | CareerRadar/重大决策路由加读九门 |
+| 2026-07-26 | thinking/principles.md | thinking | 决策原则指针改为九门；资产条对齐红线3（Outcome+可触达权） |
+| 2026-07-26 | thinking/_index.md | thinking | 登记「高频验证与渠道所有权」thread |
+| 2026-07-26 | decisions/_index.md | decision | 增加九门 standing principles 指针 |
+| 2026-07-26 | projects/careerradar/execution/ATS实测执行方案_Day1-14.md | project | 区分合规红线 vs 九门；fake-door 对齐门5 |
+| 2026-07-26 | projects/careerradar/execution/_index.md | project | 增加九门决策硬筛指针 |

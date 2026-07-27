@@ -2,6 +2,9 @@
 
 > 每条决策一个文件,ADR 格式:背景 / 选项 / 结论 / 复盘日期。
 > 归档 agent 维护;结论正文一经写入不可修改,只可追加"复盘"段。
+>
+> **Standing principles（非 ADR，每次「做不做」先读）：**  
+> [`../projects/careerradar/决策原则_红线与MVP反脆弱九门.md`](../projects/careerradar/决策原则_红线与MVP反脆弱九门.md)
 
 | 日期 | 文件 | 决策 | 状态 | 复盘日期 |
 |---|---|---|---|---|
