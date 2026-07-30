@@ -43,3 +43,4 @@
 | 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
 | 2026-07-25 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 门1新增"交付形态迁移"子项,补充"老需求换新交付界面"这类缝隙判断(源:对话) |
 | 2026-07-26 | thinking/Pieter-Levels_创业验证与低成本试错.html | thinking | Pieter Levels 的低成本试错、快速付费验证、渠道资产与决策规则复利框架 |
+| 2026-07-30 | prompts/persona/世界模型与根本问题审计器.md | prompt | 新增跨域世界模型审计器,在 Ponytail 后检查问题尺度、系统边界、关键权力、认知盲区与反证条件(源:对话与《完整人际商务思维模型体系》蒸馏) |
