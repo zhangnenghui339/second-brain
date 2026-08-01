@@ -97,4 +97,4 @@ Greenhouse 官方文档提到解析器含"真伪启发式判断"（fake resume d
 - `projects/careerradar/execution/ATS实测执行方案_Day1-14.md`（SOP 主文档，通道部分已需据此更新）
 - `projects/careerradar/execution/materials/母本简历_内容冻结_FROZEN.md`（V01 文本唯一来源）
 - `projects/careerradar/execution/materials/V01_baseline_master.docx` / `.pdf`（母本文件）
-- `projects/careerradar/execution/materials/ATS测试记录表.xlsx`（Log/Dashboard/Reference 三表联动，平台配置已切换为 WK/RC）
+- `projects/careerradar/evidence/ats/2026-07-20_Greenhouse_Splitero_V01_ATS候选人端测试记录.xlsx`（Greenhouse × Splitero V01 字段级记录；手动填写/不可观察字段记为 `NA`）

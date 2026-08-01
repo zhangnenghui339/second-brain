@@ -7,7 +7,7 @@
 
 ## 1. 关于我(常驻上下文)
 
-- 独立创业者,当前主项目 **CareerRadar (careerradar.io)**:AI 时代职业工具平台,SEO/GEO 优先,affiliate → SaaS 变现阶梯
+- 长期创业身份:**AI-native Global Solo Founder**;默认日常身份:**AI Workflow Operator**。当前主项目 **CareerRadar (careerradar.io)** 是垂直实验场,不是身份本身
 - 背景:15年+ C++/Python 工程 + 大厂产品管理 + 海外性能营销(SEO/Ads),曾创办 12 人公司并盈利 5 年
 - 决策框架:**复利资产 / 数字化杠杆 / Kelly Criterion / 非遍历性**;资产三分法:Class A(不可回填)/ B(折旧)/ C(燃料)
 - 性格结构:焦虑型依恋 + 强迫性自立 + 高认知 + 高执行;**执行力为情绪依赖型**——高能量期极强,内耗期接近瘫痪
@@ -31,7 +31,7 @@
 
 | 问题域                  | 加载角色(`prompts/`)                | 加载记忆                                                    | 典型触发                          |
 | ----------------------- | ------------------------------------ | ------------------------------------------------------------ | --------------------------------- |
-| 创业 / CareerRadar      | `business/` 下的角色文件             | `projects/careerradar/_overview.md` → `strategy/_index.md` → 默认加载 `strategy/01-流量与邮件名单飞轮.md`;命中特定飞轮时替换/补充;**涉及「做不做 / MVP / 红线」时加读** `projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "affiliate 下一步"、"这功能做不做" |
+| 创业 / CareerRadar      | `business/` 下的角色文件             | 方向生成先读 `thinking/工作流候选方向生成器.md`;项目上下文读 `projects/careerradar/_overview.md` → `strategy/_index.md` → 默认加载 `strategy/01-流量与邮件名单飞轮.md`;命中特定飞轮时替换/补充;**涉及「做不做 / MVP / 红线」时加读** `projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "affiliate 下一步"、"这功能做不做" |
 | 重大决策 / 资源分配    | `decision/` 下的角色文件             | `decisions/_index.md` + `thinking/principles.md` +（Career/MVP 相关时）`projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "要不要押注 X"、"预算怎么分"      |
 | 亲子教育               | `parenting/教育决策顾问.md`           | `family/daughter/_overview.md`                                | "家长会后怎么谈"、"学习规划"      |
 | 哲学 / 认知             | `persona/` 下的角色文件             | `thinking/_index.md` → 相关 thread                            | "恐惧与未来"、"人性第一性原理"    |
@@ -57,14 +57,14 @@
 
 ### 3.2 CareerRadar 多飞轮记忆的默认加载
 
-CareerRadar 当前同时保留四种 `status: exploring` 的运行飞轮。为了避免每次无锚点选择,按以下规则加载:
+CareerRadar 历史上并列评估四种运行飞轮；**03 ATS 实测证据飞轮已于 2026-07-20 关闭商业化路线，状态为 `killed`**，01、02、04 仍为 `status: exploring`。为了避免每次无锚点选择,按以下规则加载:
 
 1. **所有 CareerRadar 问题必读**:`projects/careerradar/_overview.md` + `projects/careerradar/strategy/_index.md`。
 2. **未明确命中某个飞轮时的默认执行基线**:`01-流量与邮件名单飞轮.md`。它代表当前 SEO / Affiliate / Email 获客与触达底座,不代表最终战略已经选定。
 3. 问题涉及 Resume/JD 行为、Outcome、Career Intelligence → 加载 `02-职业智能数据飞轮.md`,替代默认 01 作为主记忆;需要获客上下文时 01 仅作辅助。
-4. 问题涉及 ATS 实测、裁判定位、Parse Report、Benchmark → 加载 `03-ATS实测证据飞轮.md`,替代默认 01 作为主记忆。
+4. 问题涉及 ATS 实测、裁判定位、Parse Report、Benchmark → 加载 `03-ATS实测证据飞轮.md` + `decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md`；03 只作为历史方案与内容证据来源，不得恢复为默认执行路线。
 5. 问题涉及面试真题、Resume Bullet、沟通模板、数字资料库 → 加载 `04-职场资源资产库飞轮.md`,替代默认 01 作为主记忆。
-6. 问“总体战略 / 哪个飞轮更好 / 四个如何组合” → 加载 `_index.md` + 四个方案摘要;明确说明尚未定稿,不得把默认执行基线写成最终战略结论。
+6. 问“总体战略 / 哪个飞轮更好 / 四个如何组合” → 加载 `_index.md` + 四个方案摘要;明确说明 03 已关闭、其余尚未定稿,不得把默认执行基线写成最终战略结论。
 
 ## 4. 归档请求的处理流程(简版,完整版见 _meta/agent.md)
 

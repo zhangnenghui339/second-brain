@@ -5,10 +5,14 @@ project: careerradar
 source: file
 source_file: local/doc/seo工具战略规划/CareerRadar_战略流程_v10_Clau.mm
 created: 2026-07-15
-status: exploring
+status: archived
+decision_status: closed
+closed_by: decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md
 ---
 
 # 方案 03：ATS 实测证据飞轮
+
+> **状态：已关闭（2026-07-20）。** 三次测试支持方法论与案例内容，不支持收费服务、行业 Benchmark 或持续扩样。既有材料只做一次性 SEO/GEO 内容转化，正式决策见 [`../../../decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md`](../../../decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md)。下文保留为历史方案，不再作为执行路线。
 
 ## 主体定位
 
@@ -45,4 +49,3 @@ flowchart LR
 - `parse_results` 和公开方法论构成差异化证据。
 - 内容是实测数据的表达副产品。
 - Affiliate 必须与排名和实测结论隔离，维护裁判信誉。
-

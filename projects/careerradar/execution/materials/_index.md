@@ -19,7 +19,7 @@ status: active
 | [母本简历_内容冻结_FROZEN.md](母本简历_内容冻结_FROZEN.md) | Alex Chen 虚构母本简历全文,2026-07-17 冻结,变体制作唯一文本来源 | **FROZEN,禁止改动** |
 | Alex-Chen-Resume.docx | V01 基线变体源文件(单栏/Arial 11pt/纯文字) | 母版,V02–V06 由此派生 |
 | Alex-Chen-Resume.pdf | V01 导出的 PDF,已按上传统一文件名命名 | 上传用 |
-| ATS测试记录表.xlsx | 测试记录表,schema 见 SOP 0.3 节(run_id/ats/variant_id/字段级 pass 等) | 每次上传一行 |
+| [Greenhouse × Splitero V01 测试记录](../../evidence/ats/2026-07-20_Greenhouse_Splitero_V01_ATS候选人端测试记录.xlsx) | 已完成的 Greenhouse 候选人端 case，含 10 个字段的 `NA` 归因记录 | **已归档到 evidence/ats** |
 
 ## 命名规则
 

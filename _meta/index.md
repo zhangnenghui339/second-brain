@@ -41,6 +41,11 @@
 | 2026-07-17 | projects/careerradar/Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md | project | Day1 证伪 GH 候选人端回填 + 竞品实测供给为零核查;已升格为正式决策 |
 | 2026-07-17 | decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md | decision | ATS 实测主通道切换 Workable+Recruitee;确立"后台真相"双证据链叙事 |
 | 2026-07-17 | thinking/两种杠杆判别法_离机器近离文化远.md | thinking | 用经验型/系统型信任来源判断跨文化 founder-fit，并确立“离机器近、离文化远”的选位原则 |
+| 2026-07-20 | decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md | decision | Gate 1 未被三次测试推翻；关闭 Flywheel 03 商业化与 Benchmark，仅收割方法论和 SEO 内容资产 |
+| 2026-07-20 | projects/careerradar/evidence/_index.md | project | CareerRadar 已完成案例证据索引，明确单个 case 不外推为行业 Benchmark |
+| 2026-07-20 | projects/careerradar/evidence/ats/2026-07-20_Greenhouse_Splitero_V01_案例结论.md | project | Greenhouse × Splitero V01：上传已确认，手动填写与候选人端未展示使 parser 结果不可归因、不可观察 |
+| 2026-07-20 | projects/careerradar/strategy/候选路径_职业资产库_免费检索与Newsletter付费分发.md | project | 备选路径：04 资产库+免费检索入口+01 Newsletter 付费分发；非决策，待优化 |
+| 2026-07-20 | projects/careerradar/strategy/候选路径_极窄切口_Control-Treatment_PILOT验证.md | project | 备选：01 侧极窄切口 + Control/Treatment 决策页 + ~60 访 PILOT + 表→工具 + pSEO 拓词；非决策 |
 | 2026-07-26 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 三红线升级为跨项目通用版（禁AI薄壳/禁平台执行与重运营/不砍Outcome与Email），Career 映射移入附录 |
 | 2026-07-26 | projects/careerradar/决策原则_红线与MVP反脆弱九门.md | project | 六门升级为九门：问题来源/时机/付费与获客/可做稳/复利五层；旧六门文件 superseded |
 | 2026-07-26 | _meta/router.md | meta | CareerRadar/重大决策路由加读九门 |
@@ -49,3 +54,10 @@
 | 2026-07-26 | decisions/_index.md | decision | 增加九门 standing principles 指针 |
 | 2026-07-26 | projects/careerradar/execution/ATS实测执行方案_Day1-14.md | project | 区分合规红线 vs 九门；fake-door 对齐门5 |
 | 2026-07-26 | projects/careerradar/execution/_index.md | project | 增加九门决策硬筛指针 |
+| 2026-07-28 | projects/careerradar/决策原则_红线与MVP反脆弱六门.md | project | 删除：已被九门 superseded，停止维护 |
+| 2026-08-01 | thinking/工作流候选方向生成器.md | thinking | 新建九门上游：从长期身份、真实 Workflow、Distribution 与 Friction 持续生成候选 |
+| 2026-08-01 | projects/careerradar/决策原则_红线与MVP反脆弱九门.md | project | 九门前增加工作流候选方向生成器入口，明确 Codex 是 Builder 工具而非身份 |
+| 2026-08-01 | _meta/router.md | meta | 常驻身份更新为 AI-native Global Solo Founder / AI Workflow Operator，CareerRadar 降为垂直实验场 |
+| 2026-08-01 | thinking/principles.md | thinking | 商机来源层升级为真实工作流候选生成，外部趋势与迁移信号作为补充 |
+| 2026-08-01 | thinking/_index.md | thinking | 登记「工作流候选方向生成器」新 thread |
+| 2026-08-01 | projects/careerradar/_overview.md | project | 项目边界更新：CareerRadar 是垂直实验场，九门上游改为工作流候选方向生成器 |

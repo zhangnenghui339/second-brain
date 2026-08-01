@@ -2,7 +2,7 @@
 title: CareerRadar 项目速览
 type: overview
 project: careerradar
-updated: 2026-07-26
+updated: 2026-08-01
 maintained_by: ai
 ---
 
@@ -18,15 +18,17 @@ SEO/GEO 优先获客 → affiliate 变现 → SaaS 阶梯;固定预算六个月�
 Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构建期),禁止放 `public/`;repo 私有(保护词矩阵)。
 
 ## 当前状态(活跃事项)
-- **ATS 实测 Day 1–14 技术门已启动(2026-07-17)**:SOP 与物料见 `execution/`;母本简历已冻结,V01 基线已产出;Kill Criteria = 一致率 ≥90%,否则裁判定位回退
-- **ATS 实测主通道已切换 Workable+Recruitee(2026-07-17,正式决策)**:Day1 证伪 GH 候选人端回填,GH/Lever 移入 Cycle 2;同时确立"后台真相"双证据链叙事 → `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`
+- **项目角色边界(2026-08-01):**长期身份是 AI-native Global Solo Founder，默认日常身份是 AI Workflow Operator；CareerRadar 是产生与验证 Friction、工具和数据闭环的垂直实验场，不再承担身份本身。候选生成上游见 [`../../thinking/工作流候选方向生成器.md`](../../thinking/工作流候选方向生成器.md)。
+- **ATS 实测商业化飞轮已关闭(2026-07-20,正式决策)**:三次测试只支持方法论与案例内容，不支持收费服务、96 次 Benchmark 或持续扩样；已有 case 限 1–2 天转为英文 SEO/GEO 长文，随后停止投入 → `decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md`
+- **2026-07-17 ATS 主通道切换决策已被取代**:Workable+Recruitee 不再继续扩样，GH/Lever Cycle 2 不启动；原“后台真相”仅作为内容叙事素材保留。
 - Affiliate 渠道搭建:Kickresume / Resume.io / BOLD-US / Jobscan / Huntr 已申请
 - **Impact.com 账户限制(非 marketplace partner)待解决** → 经 Teal + Impact support 推进
 - GEO 知识手册已产出 HTML 内部版
-- **核心运行飞轮尚未定稿**:当前并列整理 4 种主体实现模型,见 `strategy/_index.md`;回答总体战略问题时不得默认其中一个已经胜出
+- **核心运行飞轮尚未定稿**:01、02、04 继续探索，03 已关闭商业化路线；见 `strategy/_index.md`
 - **默认执行基线**:`strategy/01-流量与邮件名单飞轮.md`;它代表当前 SEO / Affiliate / Email 获客底座,不等于最终主飞轮决策
+- **候选（非决策）**:极窄切口 × Control/Treatment × PILOT → `strategy/候选路径_极窄切口_Control-Treatment_PILOT验证.md`（与资产库×Newsletter 候选并列，均非默认执行）
 - **系统层假设进入 exploring**:见下方"系统层假设"节;回答总体战略问题时须与四飞轮一并纳入,但不得当作已定结论
-- **决策原则一页纸已升级为 MVP 反脆弱九门(2026-07-26)**:见 [`决策原则_红线与MVP反脆弱九门.md`](决策原则_红线与MVP反脆弱九门.md);做不做 MVP 先过九门,定位类决策过红线与四问;门5 暂无支付漏斗数据可先跳过推演但补测前禁建主闭环;旧六门已 superseded
+- **决策原则一页纸已升级为「工作流候选方向生成器 → MVP 反脆弱九门」(2026-08-01)**:见 [`../../thinking/工作流候选方向生成器.md`](../../thinking/工作流候选方向生成器.md) 与 [`决策原则_红线与MVP反脆弱九门.md`](决策原则_红线与MVP反脆弱九门.md);上游从真实工作生成候选，九门决定是否允许投入;门5 暂无支付漏斗数据可先跳过推演但补测前禁建主闭环;旧六门已 superseded
 
 ## 系统层假设(横跨四飞轮的元层,status: exploring)
 
@@ -38,7 +40,8 @@ Astro + Cloudflare Pages/Functions + D1 + Resend;pSEO 数据放 `src/data/`(构�
 
 ## 关键决策索引(下钻用)
 - 决策一页纸(红线 / MVP 反脆弱九门 / 四问 / 警觉信号) → [`决策原则_红线与MVP反脆弱九门.md`](决策原则_红线与MVP反脆弱九门.md)
-- ATS 实测主通道切换 + "后台真相"双证据链叙事 → `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`(证据源:`Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md`)
+- ATS 实测主通道切换 + "后台真相"双证据链叙事（已于 2026-07-20 被取代）→ `decisions/2026-07-17_ATS实测主通道切换与后台真相叙事.md`(证据源:`Greenhouse候选人端黑箱_03-ATS实测证据飞轮_strategy-update_2026-07-17.md`)
+- ATS 实测停止扩样与产品化，仅保留内容资产 → [`../../decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md`](../../decisions/2026-07-20_ATS实测仅保留内容资产并关闭商业化飞轮.md)（当前有效，取代 2026-07-17 决策）
 - 定位:裁判层而非工具层 → decisions/(迁移后补路径)
 - 资产三分法 A/B/C → thinking/principles.md;“唯一 Class A 是什么”正在四种飞轮模型中重新比较
 - compare/ 与 Reviews 分 silo,承接头对头商业词 → decisions/(迁移后补路径)
@@ -53,3 +56,8 @@ Rezi / Jobscan / Teal / LinkedIn / BOLD 系;四个结构性盲区(详见战略�
 ## 执行索引
 
 - 具体待办事项与关联物料 → [`execution/_index.md`](execution/_index.md)(注意:根目录 `tasks/` 只放 if-then 决策规则,勿混用)
+
+## 证据资产索引
+
+- 已完成、可复核且可转为内容的案例证据 → [`evidence/_index.md`](evidence/_index.md)
+- Greenhouse × Splitero V01 候选人端 case → [`evidence/ats/2026-07-20_Greenhouse_Splitero_V01_案例结论.md`](evidence/ats/2026-07-20_Greenhouse_Splitero_V01_案例结论.md)
