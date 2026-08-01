@@ -49,3 +49,4 @@
 | 2026-07-26 | decisions/_index.md | decision | 增加九门 standing principles 指针 |
 | 2026-07-26 | projects/careerradar/execution/ATS实测执行方案_Day1-14.md | project | 区分合规红线 vs 九门；fake-door 对齐门5 |
 | 2026-07-26 | projects/careerradar/execution/_index.md | project | 增加九门决策硬筛指针 |
+| 2026-08-01 | inbox/2026-08-01_AI-PDF-Summarizer关键词与竞争评估.md | thinking | 原始信号 AI PDF Summarizer SV=76（新词从0起量）+ SEO五维/九门评估；结论：独立产品放弃，仅作词簇观察 |
