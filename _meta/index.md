@@ -61,3 +61,5 @@
 | 2026-08-01 | thinking/principles.md | thinking | 商机来源层升级为真实工作流候选生成，外部趋势与迁移信号作为补充 |
 | 2026-08-01 | thinking/_index.md | thinking | 登记「工作流候选方向生成器」新 thread |
 | 2026-08-01 | projects/careerradar/_overview.md | project | 项目边界更新：CareerRadar 是垂直实验场，九门上游改为工作流候选方向生成器 |
+| 2026-08-02 | thinking/工作流候选方向生成器.md | thinking | 第 2 次迭代：升级为「身份—工作流—数据复利模型」，补齐方向发现的八模型与执行闭环 |
+| 2026-08-02 | thinking/_index.md | thinking | 更新「工作流候选方向生成器」标题、迭代次数与递进关系 |
