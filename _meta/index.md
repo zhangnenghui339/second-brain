@@ -63,3 +63,11 @@
 | 2026-08-01 | projects/careerradar/_overview.md | project | 项目边界更新：CareerRadar 是垂直实验场，九门上游改为工作流候选方向生成器 |
 | 2026-08-02 | thinking/工作流候选方向生成器.md | thinking | 第 2 次迭代：升级为「身份—工作流—数据复利模型」，补齐方向发现的八模型与执行闭环 |
 | 2026-08-02 | thinking/_index.md | thinking | 更新「工作流候选方向生成器」标题、迭代次数与递进关系 |
+| 2026-08-02 | thinking/world-models/_index.md | thinking | 建立世界观操作系统总路由：5 个 Layer、14 个模型、问题匹配与冲突裁决 |
+| 2026-08-02 | thinking/world-models/00-底层操作系统.md | thinking | 概率世界观与系统思维：Bayesian 更新、期望值、反馈回路、延迟与杠杆点 |
+| 2026-08-02 | thinking/world-models/01-理解世界.md | thinking | 博弈论、信息不对称、激励机制与稀缺/丰盛的商务分析层 |
+| 2026-08-02 | thinking/world-models/02-理解自己.md | thinking | 身份认同、心理账户与乔哈里窗的自我校准层 |
+| 2026-08-02 | thinking/world-models/03-决策与行动.md | thinking | 第一性原理、二阶思维与机会成本的决策栈 |
+| 2026-08-02 | thinking/world-models/04-复利与时间.md | thinking | 复利资产与时间折现的长期决策层 |
+| 2026-08-02 | _meta/router.md | meta | 将世界模型接入重大决策、人际商务、哲学认知与关系问题的渐进式路由 |
+| 2026-08-02 | thinking/_index.md | thinking | 登记「世界观操作系统」大型体系 thread 及组件例外规则 |

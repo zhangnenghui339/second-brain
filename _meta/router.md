@@ -32,10 +32,11 @@
 | 问题域                  | 加载角色(`prompts/`)                | 加载记忆                                                    | 典型触发                          |
 | ----------------------- | ------------------------------------ | ------------------------------------------------------------ | --------------------------------- |
 | 创业 / CareerRadar      | `business/` 下的角色文件             | 方向生成先读 `thinking/工作流候选方向生成器.md`;项目上下文读 `projects/careerradar/_overview.md` → `strategy/_index.md` → 默认加载 `strategy/01-流量与邮件名单飞轮.md`;命中特定飞轮时替换/补充;**涉及「做不做 / MVP / 红线」时加读** `projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "affiliate 下一步"、"这功能做不做" |
-| 重大决策 / 资源分配    | `decision/` 下的角色文件             | `decisions/_index.md` + `thinking/principles.md` +（Career/MVP 相关时）`projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "要不要押注 X"、"预算怎么分"      |
+| 重大决策 / 资源分配    | `decision/` 下的角色文件             | `decisions/_index.md` + `thinking/principles.md` + `thinking/world-models/_index.md` → 命中 Layer；Career/MVP 相关时再加 `projects/careerradar/决策原则_红线与MVP反脆弱九门.md` | "要不要押注 X"、"预算怎么分"      |
 | 亲子教育               | `parenting/教育决策顾问.md`           | `family/daughter/_overview.md`                                | "家长会后怎么谈"、"学习规划"      |
-| 哲学 / 认知             | `persona/` 下的角色文件             | `thinking/_index.md` → 相关 thread                            | "恐惧与未来"、"人性第一性原理"    |
-| 心理 / 关系 / 内耗      | `persona/` + `psychology/`           | `family/partner/_overview.md` + 本文件第 1 节性格描述        | "这段互动怎么理解"、"内耗期怎么办" |
+| 人际 / 商务博弈        | `business/` 或 `decision/` 下的角色文件 | `thinking/world-models/_index.md` → 优先 Layer 1；涉及自身估值或盲区时加 Layer 2 | "合作方为什么不推进"、"这个资源该不该分享" |
+| 哲学 / 认知             | `persona/` 下的角色文件             | `thinking/_index.md` + `thinking/world-models/_index.md` → 命中 Layer | "恐惧与未来"、"人性第一性原理"    |
+| 心理 / 关系 / 内耗      | `persona/` + `psychology/`           | `family/partner/_overview.md` + 本文件第 1 节性格描述；需要结构分析时加 `thinking/world-models/_index.md` → Layer 0/2 | "这段互动怎么理解"、"内耗期怎么办" |
 | 信息鉴别               | `decision/` 里的事实核查角色         | 无需历史记忆                                                  | "这篇文章 / 这个成功学观点靠谱吗" |
 | 表达 / 写作             | `expression/`                        | `prompts/writing/`(风格规范)                                 | "写成推文 / 落地页文案"           |
 | 归档请求("这个放哪")   | 无需角色                             | `_meta/taxonomy.md` + `thinking/_index.md` 的 thread 列表     | "这段内容放哪、跟什么整合"        |
@@ -66,6 +67,16 @@ CareerRadar 历史上并列评估四种运行飞轮；**03 ATS 实测证据飞�
 5. 问题涉及面试真题、Resume Bullet、沟通模板、数字资料库 → 加载 `04-职场资源资产库飞轮.md`,替代默认 01 作为主记忆。
 6. 问“总体战略 / 哪个飞轮更好 / 四个如何组合” → 加载 `_index.md` + 四个方案摘要;明确说明 03 已关闭、其余尚未定稿,不得把默认执行基线写成最终战略结论。
 
+### 3.3 世界模型的渐进式调用
+
+世界模型入口：`thinking/world-models/_index.md`。调用规则：
+
+1. 先读 `_index.md` 的问题路由，只加载命中的 Layer 文件，禁止默认读取全部五层。
+2. 默认使用 **1 个主模型 + 1 个反证/辅助模型**；复杂问题最多再加 1 个时间模型。
+3. 输出开头说明“主模型 / 辅助模型 / 选择原因”，结尾给出“新证据出现时如何更新判断”。
+4. 模型只用于生成与校准假设，不能替代事实核查、真实支付、行为数据和 Outcome。
+5. 模型与持续观测冲突时，以事实为准，更新模型；不得为了维护模型而改写事实。
+
 ## 4. 归档请求的处理流程(简版,完整版见 _meta/agent.md)
 
 1. 读 `_meta/taxonomy.md` 确定 type 与目标目录
@@ -78,7 +89,7 @@ CareerRadar 历史上并列评估四种运行飞轮；**03 ATS 实测证据飞�
 ```
 L1 本文件(每次必读)
  → L2 领域 _overview.md 或 _index.md(按路由命中读)
-   → L3 具体文件(按 overview 中的指针精确下钻)
+   → L3 具体文件或 world-models 对应 Layer(按 overview/index 中的指针精确下钻)
 ```
 
 禁止一上来全库扫描;禁止跳过 overview 直接猜文件。
