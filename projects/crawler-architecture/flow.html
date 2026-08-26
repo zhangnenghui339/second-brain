@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>拟人化分布式爬虫 · 数据流闭环</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg0: #0b1218;
+      --bg1: #12202b;
+      --bg2: #1a2f3d;
+      --line: #2a4558;
+      --text: #e6f0f5;
+      --muted: #8 Panoramic;
+      --teal: #2ec4b6;
+      --teal-dim: rgba(46, 196, 182, 0.15);
+      --amber: #f0a202;
+      --amber-dim: rgba(240, 162, 2, 0.14);
+      --rose: #e85d4c;
+      --rose-dim: rgba(232, 93, 76, 0.14);
+      --sky: #5dade2;
+      --ok: #3dcf8e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(46, 196, 182, 0.12), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(240, 162, 2, 0.08), transparent 50%),
+        linear-gradient(180deg, #081018 0%, var(--bg0) 40%, #0d1720 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(46, 196, 182, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46, 196, 182, 0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    header.hero {
+      margin-bottom: 36px;
+      animation: rise 0.7s ease both;
+    }
+
+    .brand {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      max-width: 18ch;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      color: #a8c0ce;
+      max-width: 52ch;
+      font-size: 1.05rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 28px 0 20px;
+      animation: rise 0.8s ease both;
+    }
+
+    .tab {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(18, 32, 43, 0.8);
+      color: #b7cdd9;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .tab:hover { border-color: var(--teal); color: var(--text); transform: translateY(-1px); }
+    .tab.active {
+      background: var(--teal-dim);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .panel {
+      display: none;
+      animation: rise 0.45s ease both;
+    }
+    .panel.active { display: block; }
+
+    .panel-card {
+      background: linear-gradient(160deg, rgba(26, 47, 61, 0.9), rgba(12, 22, 30, 0.95));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px 16px 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      overflow-x: auto;
+    }
+
+    .panel-card h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 12px 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-card h2 .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 4px var(--teal-dim);
+    }
+
+    .panel-card h2 .dot.risk { background: var(--amber); box-shadow: 0 0 0 4px var(--amber-dim); }
+    .panel-card h2 .dot.ban { background: var(--rose); box-shadow: 0 0 0 4px var(--rose-dim); }
+
+    .hint {
+      margin: 0 12px 16px;
+      color: #8eacbd;
+      font-size: 0.9rem;
+    }
+
+    .mermaid {
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .mod {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: rgba(18, 32, 43, 0.7);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .mod:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .mod .tag {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .mod h3 { font-size: 1rem; margin-bottom: 6px; }
+    .mod p { color: #93aebf; font-size: 0.88rem; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 22px;
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px dashed var(--line);
+      background: rgba(8, 16, 24, 0.5);
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #9bb4c4;
+    }
+    .swatch {
+      width: 14px; height: 14px; border-radius: 3px;
+    }
+    .swatch.flow { background: var(--teal); }
+    .swatch.warn { background: var(--amber); }
+    .swatch.fail { background: var(--rose); }
+    .swatch.ok { background: var(--ok); }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(18, 32, 43, 0.65);
+    }
+    .step .n {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 1.1rem;
+      color: var(--amber);
+      font-weight: 500;
+    }
+    .step h4 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step p { color: #93aebf; font-size: 0.88rem; }
+    .step .mods-hit {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      color: #b7cdd9;
+    }
+    .chip.ap { border-color: #3d8f8a; color: var(--teal); }
+    .chip.pp { border-color: #4a7aa8; color: var(--sky); }
+    .chip.fp { border-color: #8a7a3d; color: var(--amber); }
+    .chip.sp { border-color: #8a5a6a; color: #e89ab0; }
+
+    footer {
+      margin-top: 36px;
+      color: #6e8796;
+      font-size: 0.8rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 28px 14px 60px; }
+      .panel-card { padding: 14px 6px 4px; border-radius: 14px; }
+      .step { grid-template-columns: 40px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="brand">Persona Crawler · Control Plane</div>
+      <h1>拟人化分布式爬虫数据流闭环</h1>
+      <p class="lead">账号 × 代理 × 指纹 × 行为 绑定为 Persona；验证码/封号时按最小破坏面降级协作。</p>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="main" type="button">① 主数据流闭环</button>
+      <button class="tab" data-tab="risk" type="button">② 验证码 / 封号降级</button>
+      <button class="tab" data-tab="pools" type="button">③ 四池协作时序</button>
+      <button class="tab" data-tab="persona" type="button">④ Persona 生命周期</button>
+    </nav>
+
+    <!-- Panel 1: Main flow -->
+    <section class="panel active" id="panel-main">
+      <div class="panel-card">
+        <h2><span class="dot"></span>完整数据流闭环架构</h2>
+        <p class="hint">任务入队 → 编排绑定 Persona → 拟人执行 → 信号回流 → 三方归因 → 再调度</p>
+        <pre class="mermaid">
+flowchart TB
+  subgraph IN["任务入口"]
+    TQ["任务队列 Task Queue"]
+  end
+
+  subgraph ORCH["编排与策略"]
+    O["Orchestrator 策略引擎"]
+    BUS["Risk Event Bus"]
+    DEG["降级状态机"]
+    DLQ["延迟重试 / DLQ"]
+  end
+
+  subgraph ID["身份层"]
+    AP["账号池 Account Pool<br/>Lease · Grade · Health"]
+    SP["卡池 SIM / SMS Pool"]
+    TK["工单 REGISTER / UNBAN / 2FA"]
+  end
+
+  subgraph NET["网络层"]
+    PP["代理池 Proxy Pool<br/>住宅 Sticky / 机房"]
+    CB["熔断器 Circuit Breaker"]
+  end
+
+  subgraph ENV["环境与行为"]
+    FP["指纹画像 Fingerprint"]
+    BR["浏览器集群 Kernel"]
+    BH["行为模拟 轨迹/时序"]
+  end
+
+  subgraph RUN["执行运行时"]
+    W["Worker 会话<br/>Persona = Acc × Proxy × FP"]
+    TGT["目标站点"]
+  end
+
+  subgraph OBS["观测归因"]
+    M["指标 · 日志 · 归因"]
+    H["健康度 / 权重回写"]
+  end
+
+  TQ --> O
+  O -->|租约| AP
+  O -->|亲和匹配| PP
+  O -->|绑定画像| FP
+  AP --> W
+  PP --> W
+  FP --> BR --> W
+  BH --> W
+  W --> TGT
+
+  TGT -->|成功| M
+  TGT -->|验证码/限流/封号| BUS
+  BUS --> DEG
+  DEG -->|L1 同会话回填| W
+  DEG -->|L2 冷却重试| DLQ
+  DEG -->|L3 换代理保指纹| PP
+  DEG -->|BAN| AP
+  DEG -->|代理归因| CB
+  CB --> PP
+  DEG -->|短信/解封/2FA| TK
+  TK --> SP
+  SP -->|验证码| TK
+  TK -->|恢复/新号| AP
+  DLQ --> O
+  M --> H
+  H --> AP
+  H --> PP
+  H --> FP
+  AP -->|同 Persona 刷新 Token| W
+        </pre>
+      </div>
+
+      <div class="modules">
+        <article class="mod">
+          <div class="tag">01 · ACCOUNT</div>
+          <h3>账号池</h3>
+          <p>Cookie/Token 生命周期、S/A/B/C 权重、租约防双花、轻/深探活健康分。</p>
+        </article>
+        <article class="mod">
+          <div class="tag">02 · SIM</div>
+          <h3>卡池</h3>
+          <p>接码 Provider 抽象；注册 / 解封 / 2FA 工单流转，与 Worker 解耦。</p>
+        </article>
+        <article class="mod">
+          <div class="tag">03 · PROXY</div>
+          <h3>代理池</h3>
+          <p>动态住宅 Sticky、静态亲和、机房批量；按错误率熔断 Open/Half-Open。</p>
+        </article>
+        <article class="mod">
+          <div class="tag">04 · FINGERPRINT</div>
+          <h3>指纹环境</h3>
+          <p>Canvas/WebGL/字体/Audio/UA-CH 一致画像，与账号长期绑定不随机。</p>
+        </article>
+      </div>
+
+      <div class="legend">
+        <span><i class="swatch flow"></i>正常调度 / 成功回流</span>
+        <span><i class="swatch warn"></i>验证码 · 限流 · 降级</span>
+        <span><i class="swatch fail"></i>封号 · 熔断 · 死号</span>
+        <span><i class="swatch ok"></i>解封恢复 · 健康回写</span>
+      </div>
+    </section>
+
+    <!-- Panel 2: Risk degradation -->
+    <section class="panel" id="panel-risk">
+      <div class="panel-card">
+        <h2><span class="dot risk"></span>验证码 / 封号 · 降级与重试协作</h2>
+        <p class="hint">风险事件总线驱动；同 Persona 优先回填，禁止封号后立刻换机房硬冲</p>
+        <pre class="mermaid">
+flowchart TD
+  E["目标站返回异常信号"] --> C{"事件分类"}
+
+  C -->|RATE_LIMIT| RL["限流：降速 + 延迟重入队"]
+  C -->|CAPTCHA| CAP["冻结当前租约<br/>Account×Proxy×FP"]
+  C -->|BAN| BAN["账号 BANNED<br/>health=0 回收 Cookie"]
+  C -->|PROXY_DEAD| PD["代理熔断 Open"]
+  C -->|AUTH_FAIL| AF["Token 刷新 / 标记过期"]
+
+  CAP --> L1{"L1 同会话打码?"}
+  L1 -->|成功| OK["继续原任务"]
+  L1 -->|失败/升级| L2["L2 账号 COOLDOWN<br/>proxy captcha_hit++"]
+  L2 --> L3{"短时多次验证码?"}
+  L3 -->|否| RQ["任务延迟重试"]
+  L3 -->|是| SW["L3 同 Geo 换 Sticky 代理<br/>指纹默认不换 · grade 降级"]
+
+  BAN --> ATTR{"归因拆分"}
+  ATTR -->|多账号同代理| CB1["熔断出口/子网"]
+  ATTR -->|多代理同账号| ACC["账号/指纹问题"]
+  ATTR -->|超频行为| RATE["调速率限制器"]
+  BAN --> TK["创建 UNBAN 工单 → 卡池"]
+  TK --> REC["解封成功 → RECOVERY<br/>新亲和 · 降权 · 暖号"]
+
+  PD --> REB["会话优雅中止<br/>同城/同 ASN 换绑"]
+  AF --> REF["同 Persona 静默刷新"]
+
+  RQ --> BUD["检查 retry_budget"]
+  SW --> BUD
+  BUD -->|未超| ORCH["回 Orchestrator"]
+  BUD -->|超预算| DLQ["进入 DLQ / 人工复盘"]
+        </pre>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">L1</div>
+          <div>
+            <h4>同会话回填验证码</h4>
+            <p>冻结租约，打码/识别后在原浏览器上下文回填，Persona 三元组不变。</p>
+            <div class="mods-hit">
+              <span class="chip ap">账号池·冻结</span>
+              <span class="chip pp">代理·Sticky 保持</span>
+              <span class="chip fp">指纹·不变</span>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">L2</div>
+          <div>
+            <h4>冷却 + 延迟重试</h4>
+            <p>账号进 COOLDOWN，代理记 captcha_hit，任务延迟重入队，避免立刻重放。</p>
+            <div class="mods-hit">
+              <span class="chip ap">账号池·冷却</span>
+              <span class="chip pp">代理·记分</span>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">L3</div>
+          <div>
+            <h4>换出口保指纹</h4>
+            <p>同 Geo 新 Sticky 住宅代理；指纹默认不换（换指纹更像盗号）；账号降权暖号。</p>
+            <div class="mods-hit">
+              <span class="chip ap">账号池·降权</span>
+              <span class="chip pp">代理池·换亲和</span>
+              <span class="chip fp">指纹·保持</span>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">BAN</div>
+          <div>
+            <h4>封号归因 + 卡池解封</h4>
+            <p>三方归因后熔断代理或下线指纹模板；UNBAN 工单走卡池；恢复后进 RECOVERY 暖号池。</p>
+            <div class="mods-hit">
+              <span class="chip ap">账号池·BANNED</span>
+              <span class="chip sp">卡池·UNBAN</span>
+              <span class="chip pp">代理·熔断?</span>
+              <span class="chip fp">指纹·下线?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 3: Four pools sequence -->
+    <section class="panel" id="panel-pools">
+      <div class="panel-card">
+        <h2><span class="dot"></span>四池协作时序（单次任务）</h2>
+        <p class="hint">编排器串起四个资源池；卡池仅在注册/解封/2FA 时异步介入</p>
+        <pre class="mermaid">
+sequenceDiagram
+  autonumber
+  participant TQ as 任务队列
+  participant O as Orchestrator
+  participant AP as 账号池
+  participant PP as 代理池
+  participant FP as 指纹库
+  participant W as Worker
+  participant T as 目标站
+  participant BUS as Risk Bus
+  participant SP as 卡池
+
+  TQ->>O: 领取任务
+  O->>AP: 按 grade/health 申请租约
+  AP-->>O: Account + Cookie/Token
+  O->>PP: 按账号亲和/敏感度匹配代理
+  PP-->>O: Sticky Proxy
+  O->>FP: 绑定长期 Fingerprint Profile
+  FP-->>O: Profile ID
+  O->>W: 下发 Persona 会话
+
+  W->>T: 拟人化请求
+  alt 业务成功
+    T-->>W: 200 / 业务 OK
+    W->>AP: 成功反馈 health↑
+    W->>PP: 成功反馈
+  else 验证码
+    T-->>W: CAPTCHA
+    W->>BUS: RiskEvent CAPTCHA
+    BUS->>AP: 冻结租约 / COOLDOWN
+    BUS->>PP: captcha_hit++
+    Note over W: L1 同会话打码回填
+  else 封号
+    T-->>W: BAN
+    W->>BUS: RiskEvent BAN
+    BUS->>AP: BANNED health=0
+    BUS->>SP: UNBAN 工单
+    SP-->>AP: 解封成功 → RECOVERY
+  end
+        </pre>
+      </div>
+    </section>
+
+    <!-- Panel 4: Persona lifecycle -->
+    <section class="panel" id="panel-persona">
+      <div class="panel-card">
+        <h2><span class="dot ban"></span>账号状态机 · Persona 生命周期</h2>
+        <p class="hint">新号必须暖号；封号经卡池解封后降权恢复，禁止直接冲锋</p>
+        <pre class="mermaid">
+stateDiagram-v2
+  [*] --> NEW: 注册入库 / 导入
+  NEW --> WARMING: grade=C 暖号任务
+  WARMING --> ACTIVE: 健康分达标
+  ACTIVE --> ACTIVE: 租约发放 / Token 刷新
+  ACTIVE --> COOLDOWN: 验证码 / 限流
+  COOLDOWN --> ACTIVE: 冷却结束 + 轻探活 OK
+  ACTIVE --> CAPTCHA: 强验证码
+  CAPTCHA --> COOLDOWN: L2 降级
+  CAPTCHA --> ACTIVE: L1 回填成功
+  ACTIVE --> BANNED: 封号信号
+  CAPTCHA --> BANNED: 升级为封禁
+  BANNED --> RECOVERY: 卡池 UNBAN 成功
+  RECOVERY --> WARMING: 换亲和代理 · 降权
+  BANNED --> DEAD: 解封失败 / 永久封
+  COOLDOWN --> DEAD: 连续探活失败
+  DEAD --> [*]
+        </pre>
+      </div>
+
+      <div class="modules" style="margin-top:18px">
+        <article class="mod">
+          <div class="tag">RETRY BUDGET</div>
+          <h3>重试预算</h3>
+          <p>same_persona 1–2 · new_proxy 1 · new_account 2 · new_fingerprint 0–1（默认不换）</p>
+        </article>
+        <article class="mod">
+          <div class="tag">BINDING RULE</div>
+          <h3>绑定铁律</h3>
+          <p>会话内不拆散 Persona；刷新 Token 必须同代理同指纹；Geo/时区/语言对齐。</p>
+        </article>
+        <article class="mod">
+          <div class="tag">CIRCUIT</div>
+          <h3>代理熔断</h3>
+          <p>Closed → Open（冷却）→ Half-Open（探测）；多账号同挂优先判代理。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>projects/crawler-architecture/flow.html · 授权采集 / 攻防演练用途</footer>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "dark",
+      securityLevel: "loose",
+      flowchart: { curve: "basis", padding: 12, htmlLabels: true },
+      sequence: { actorMargin: 28, messageMargin: 36 },
+      themeVariables: {
+        darkMode: true,
+        background: "transparent",
+        primaryColor: "#1a3a42",
+        primaryTextColor: "#e6f0f5",
+        primaryBorderColor: "#2ec4b6",
+        lineColor: "#5a7d90",
+        secondaryColor: "#2a2418",
+        tertiaryColor: "#12202b",
+        noteBkgColor: "#1a2f3d",
+        noteTextColor: "#e6f0f5",
+        noteBorderColor: "#f0a202",
+        actorBkg: "#1a2f3d",
+        actorBorder: "#2ec4b6",
+        actorTextColor: "#e6f0f5",
+        signalColor: "#b7cdd9",
+        signalTextColor: "#e6f0f5"
+      }
+    });
+
+    async function renderVisible(panel) {
+      const nodes = panel.querySelectorAll(".mermaid");
+      for (const node of nodes) {
+        if (node.dataset.rendered === "1") continue;
+        const id = "mmd-" + Math.random().toString(36).slice(2);
+        const code = node.textContent.trim();
+        try {
+          const { svg } = await mermaid.render(id, code);
+          node.innerHTML = svg;
+          node.dataset.rendered = "1";
+        } catch (err) {
+          node.textContent = "图表渲染失败: " + err.message;
+        }
+      }
+    }
+
+    const tabs = document.querySelectorAll(".tab");
+    const panels = {
+      main: document.getElementById("panel-main"),
+      risk: document.getElementById("panel-risk"),
+      pools: document.getElementById("panel-pools"),
+      persona: document.getElementById("panel-persona")
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", async () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        Object.values(panels).forEach((p) => p.classList.remove("active"));
+        const panel = panels[tab.dataset.tab];
+        panel.classList.add("active");
+        await renderVisible(panel);
+      });
+    });
+
+    renderVisible(panels.main);
+  </script>
+</body>
+</html>
